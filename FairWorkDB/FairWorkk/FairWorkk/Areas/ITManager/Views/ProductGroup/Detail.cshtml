@@ -1,0 +1,32 @@
+﻿@model List<ProductGroup>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Ürün Grup Detay";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>ID: <label style="color:darkred">@item.ID</label></h5></center><br />
+                <center><h5>Ürün Codu: <label style="color:darkred">@item.ProductCode</label></h5></center><br />
+                <center>
+                    <h5>
+                        Ürün ID: <label style="color:darkred"> @item.Product.ID</label><br />
+                        Ürün Adı: <label style="color:darkred"> @item.Product.ProductName</label><br />
+                        Ürün Fiyatı: <label style="color:darkred">@item.Product.ProductPrice</label><br />
+                        Ürün Özellikleri: <label style="color:darkred">@item.Product.Features</label><br />
+                    </h5>
+                </center><br />
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "ProductGroup", null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/BoxOfficeAttendant/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "QR Kodu Oluşturma";
+}
+
+<!--Hocam malasef hıcbırsekılde olusturulan QR kodunu database kaydemedıgım ıcın bu sekılde bır algorıtma kurdum ınsallah begenırsın...-->
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="panel">
+            <br />
+            <div class="panel-body">
+                @using (Html.BeginForm("Index", "QRCode", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <h5 style="color:red">Ziyaretçinin TC Kimlik No veya Telefon Numarası</h5>
+                        <input type="text" name="dkod" class="form-control" placeholder="TC numarasını Giriniz veya Telefon numarasını yazınız.." />
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-danger">QR Kod Oluştur</button>
+                    </div>
+
+                    <div class="form-group">
+                        <h5>UYARI: Olusan QR Kodu sağ tıklayıp resmi adresini kopyala dedikten sonra ziyaretçi ekle yerinden QR Kodu yerine yapıştırın ve öyle kaydedin.</h5>
+                    </div>
+                }
+
+                @if (ViewBag.KarekodResim != null)
+                {
+                    <img src="@ViewBag.KarekodResim" alt="" style="height:500px;width:500px" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

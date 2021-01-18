@@ -1,0 +1,39 @@
+﻿@model AppUser
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel">
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(x=>x.ID)
+
+                    <div class="form-group">
+                        <label>Kullanıcı Adı</label>
+                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", placeholder = "Kullanıcı adını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Şifresi</label>
+                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control", placeholder = "Sifrenizi yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Role(Genel Müdür,KAtılımcı Firma vb.)</label>
+                        @Html.DropDownList("RoleId", (SelectList)ViewBag.Role, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön", "Index", "AppUser", null, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

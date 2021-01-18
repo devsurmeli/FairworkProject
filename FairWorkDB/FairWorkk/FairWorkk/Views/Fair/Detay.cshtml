@@ -1,0 +1,46 @@
+﻿@model List<Fair>
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section-header">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h1 class="page-header">Fuar Detayi</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container container-int">
+
+    <ol class="breadcrumb">
+        <li><a href="/Home/Index">Anasayfa</a></li>
+        <li><a href="/Fair/Index">Fuarlar</a></li>
+        <li class="active">Fuar Detayi</li>
+    </ol>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-8">
+                <img class="img-responsive" src="@item.ImagePat" style="width:690px;height:400px" alt="Portfolio 1">
+            </div>
+
+            <div class="col-md-4">
+                <h3><small>Tarihi</small></h3>
+                <small>@item.StartDate.ToString("D")-@item.FinishDate.ToString("D")</small>
+                <h3><small>Fuar Adi</small></h3>
+                <p><small>@item.FairName</small></p>
+                <h3>Adresi</h3>
+                <p>@item.Address</p>
+                @Html.ActionLink("Katilimci Firma", "Add", "Company",null ,new { @class = "btn btn-danger" })
+                @Html.ActionLink("Ziyaretçi", "Add", "Guest",null, new { @class = "btn btn-success" })
+            </div>
+        }
+    </div>
+</div>

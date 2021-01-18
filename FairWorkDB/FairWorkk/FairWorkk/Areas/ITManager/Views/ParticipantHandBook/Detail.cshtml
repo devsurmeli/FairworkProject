@@ -1,0 +1,49 @@
+﻿@model List<ParticipantHandbook>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Katılımcı Ek Kitabı Detay Sayfası";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>ID: <label style="color:darkred">@item.ID</label></h5></center><br />
+                <center><h5>Gönderi Tarihi: <label style="color:darkred">@item.ShippingDate.ToString("d")</label></h5></center><br />
+                <center><h5>Kim Tarafından Gönderildi: <label style="color:darkred">@item.EmployeeId @item.Employee.FullName (@item.Employee.Title)</label></h5></center><br />
+                <center><h5>Teslim Alınan Tarihi: <label style="color:darkred">@item.DeliveryDate.ToString("d")</label></h5></center><br />
+                <center>
+                    <h5>
+                         Katılacagı Fuar Bilgileri: @item.ID<br />
+                        Fuar Adı: <label style="color:darkred">@item.Fair.FairName</label>
+                        Fuar Adresi: <label style="color:darkred">@item.Fair.Address</label>
+                        Fuar Başlangıc-Bitiş Tarihi: <label style="color:darkred">@item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d") </label>
+                    </h5>
+                </center><br />
+                <center>
+                    <h5>
+                        Firma ID: <label style="color:darkred"> @item.Company.ID</label><br />
+                        Firma Adı: <label style="color:darkred">@item.Company.CompanyName</label><br />
+                        Firma Yetkilisi: <label style="color:darkred">@item.Company.CompanyOfficial</label><br />
+                        Firma Unvanı: <label style="color:darkred">@item.Company.Title</label><br />
+                        Firma Telefonu: <label style="color:darkred">@item.Company.Phone</label><br />
+                        Firma Emaili: <label style="color:darkred">@item.Company.Email</label><br />
+                        Firma Fax: <label style="color:darkred">@item.Company.Fax</label><br />
+                        Firma Addresi: <label style="color:darkred">@item.Company.Address</label><br />
+                        Firma Ülkesi: <label style="color:darkred">@item.Company.Country.CountryName</label><br />
+                        Firma Sectorü: <label style="color:darkred">@item.Company.Sector.SectorAdı</label><br />
+                        Firmanın Katıldığı Fuar Sayısı: <label style="color:darkred">@item.Company.FairAttendance</label><br />
+                    </h5>
+                </center><br />
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "ParticipantHandbook", null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>
+

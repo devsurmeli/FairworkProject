@@ -1,0 +1,108 @@
+﻿@model FreeArea 
+@{
+    ViewBag.Title = "FreeAdd";
+    Layout = "~/Areas/SaLesPerson/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Boş Alan Ekle";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-heading">
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("FreeAdd", "FreeArea", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>Hangi Firma</label>
+                        @Html.DropDownList("CompanyId", (SelectList)ViewBag.CompanyId, "Lütfen hangi firmaysa seçin", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hangi Sözleşme</label>
+                        @Html.DropDownList("ContractId", (SelectList)ViewBag.Contract, "Lütfen hangi sözleşme ise ID'sını seçin", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox">
+                            @Html.EditorFor(x => x.Electric)
+                            <label>Eletrik İhtiyacı Var mı?<span style="color:red">(Evet ise Tıkla,Hayır İse Boş Bırak)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Elektrik İhtiyac Mktari</label>
+                        @Html.TextBoxFor(x => x.KWNeed, new { @class = "form-control", placeholder = "Lütfen Elektrik ihtiyacınızı 100KW şeklinde yazın...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Elektrik İhtiyac Fiyatı</label>
+                        @Html.TextBoxFor(x => x.KWPrice, new { @class = "form-control", placeholder = "Lütfen Elektrik ihtiyacının fiyatını yazın...." })
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox">
+                            @Html.EditorFor(x => x.Water)
+                            <label>Su İhtiyacı Var mı?<span style="color:red">(Evet ise Tıkla,Hayır İse Boş Bırak)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Su İhtiyac Mktari</label>
+                        @Html.TextBoxFor(x => x.LTNeed, new { @class = "form-control", placeholder = "Lütfen Su ihtiyacınızı 100LT şeklinde yazın...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Su İhtiyac Fiyatı</label>
+                        @Html.TextBoxFor(x => x.LTPrice, new { @class = "form-control", placeholder = "Lütfen su ihtiyacının fiyatını yazın...." })
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox">
+                            @Html.EditorFor(x => x.WasteWater)
+                            <label>Atık Su İhtiyacı Var mı?<span style="color:red">(Evet ise Tıkla,Hayır İse Boş Bırak)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Atık Su İhtiyac Mktari</label>
+                        @Html.TextBoxFor(x => x.WLTNeed, new { @class = "form-control", placeholder = "Lütfen Atık Su ihtiyacınızı 100WLT şeklinde yazın...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Atık Su İhtiyac Fiyatı</label>
+                        @Html.TextBoxFor(x => x.WLTPrice, new { @class = "form-control", placeholder = "Lütfen atık su ihtiyacının fiyatını yazın...." })
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox">
+                            @Html.EditorFor(x => x.CompressedAir)
+                            <label>Basınclı Hava İhtiyacı Var mı?<span style="color:red">(Evet ise Tıkla,Hayır İse Boş Bırak)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Basınclı Hava İhtiyac Mktari</label>
+                        @Html.TextBoxFor(x => x.AirNeed, new { @class = "form-control", placeholder = "Lütfen basınçlı hava ihtiyacınızı 100WLT şeklinde yazın...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Basınclı Hava İhtiyac Fiyatı</label>
+                        @Html.TextBoxFor(x => x.AirPrice, new { @class = "form-control", placeholder = "Lütfen basınclı hava ihtiyacının fiyatını yazın...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bütün İhtiyaçların Toplam Fiyatı</label>
+                        @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control", placeholder = "Lütfen bütün ihtiyacların toplma fiyatını yazın...." })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön", "Index", "FreeArea", null, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

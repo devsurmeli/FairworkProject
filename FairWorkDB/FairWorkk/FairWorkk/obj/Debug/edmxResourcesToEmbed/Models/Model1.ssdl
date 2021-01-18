@@ -1,0 +1,1363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FairWorkDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdditionalStandMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="FairId" Type="int" Nullable="false" />
+    <Property Name="StandName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="StandCode" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="StandPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="StandFeatures" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="SupplierId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ADMFAPayment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="FairId" Type="int" Nullable="false" />
+    <Property Name="FreeArea" Type="bit" />
+    <Property Name="FreeAreaId" Type="int" />
+    <Property Name="FreeAreaTotalPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AdditionalStandId" Type="int" Nullable="false" />
+    <Property Name="AddiitionalStandTotalPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AmountNotPaid" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DollarPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EuroPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TurkıshLira" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="AppUserInformation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="AppUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="AppUsers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <EntityType Name="BudgetAndCurrentSale">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="ContractTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AdditionalStandTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="OtherTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ComisyonTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="KDVTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CorporateTaxTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ReserveFundTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DollarExchangeRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DollarTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EuroExchangeRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EuroTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TurkıshLiraTotal" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="CatalogInputForm">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="ProductGroupId" Type="int" Nullable="false" />
+    <Property Name="CompanyProfileId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="CompanyOfficial" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Intercom" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="SectorId" Type="int" Nullable="false" />
+    <Property Name="FairId" Type="int" Nullable="false" />
+    <Property Name="FairAttendance" Type="int" />
+  </EntityType>
+  <EntityType Name="CompanyContractPayment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContractId" Type="int" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="FairId" Type="int" Nullable="false" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AmountNotPaid" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DollarPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EuroPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TurkıshLira" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="CompanyInformation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="Adress" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TaxAuthority" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TaxNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FairOfficial" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyNeed">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="InvitationNumber" Type="smallint" />
+    <Property Name="PosterNumber" Type="smallint" />
+    <Property Name="PersonelEntryCardNumber" Type="smallint" />
+    <Property Name="StaffParkingEntryCardNumber" Type="smallint" />
+  </EntityType>
+  <EntityType Name="CompanyProfile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProfileName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContractDate" Type="date" Nullable="false" />
+    <Property Name="SalesPersonId" Type="int" Nullable="false" />
+    <Property Name="CompanyInformationId" Type="int" Nullable="false" />
+    <Property Name="ContractTypeId" Type="int" Nullable="false" />
+    <Property Name="StandTypeId" Type="int" Nullable="false" />
+    <Property Name="StandId" Type="int" Nullable="false" />
+    <Property Name="SquarePrice" Type="int" />
+    <Property Name="CurrencyId" Type="int" />
+    <Property Name="EcxhangeRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DiscountRate" Type="int" Nullable="false" />
+    <Property Name="MaturityNumber" Type="int" />
+    <Property Name="PaymentPlan" Type="nvarchar(max)" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ContractDeadline" Type="date" Nullable="false" />
+    <Property Name="ContractSigned" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContractType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DepartmanName" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Fair">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FairName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="FinishDate" Type="date" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SaloonId" Type="int" Nullable="false" />
+    <Property Name="FairPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ImagePat" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FreeArea">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="ContractId" Type="int" />
+    <Property Name="Electric" Type="bit" Nullable="false" />
+    <Property Name="KWNeed" Type="nvarchar" MaxLength="50" />
+    <Property Name="KWPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Water" Type="bit" Nullable="false" />
+    <Property Name="LTNeed" Type="nvarchar" MaxLength="50" />
+    <Property Name="LTPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WasteWater" Type="bit" Nullable="false" />
+    <Property Name="WLTNeed" Type="nvarchar" MaxLength="50" />
+    <Property Name="WLTPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CompressedAir" Type="bit" Nullable="false" />
+    <Property Name="AirNeed" Type="nvarchar" MaxLength="50" />
+    <Property Name="AirPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Adress" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ProfessionId" Type="int" Nullable="false" />
+    <Property Name="TicketTypeId" Type="int" Nullable="false" />
+    <Property Name="FairId" Type="int" Nullable="false" />
+    <Property Name="QrCodeImage" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="HiddenDiscount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="SaloonId" Type="int" Nullable="false" />
+    <Property Name="StandId" Type="int" Nullable="false" />
+    <Property Name="Width" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Length" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Area" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CurrencyId" Type="int" Nullable="false" />
+    <Property Name="ExchangeRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MeterPrice" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Interview">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalesPersonId" Type="int" />
+    <Property Name="OfferDate" Type="date" Nullable="false" />
+    <Property Name="IntervieweeId" Type="int" Nullable="false" />
+    <Property Name="SectorId" Type="int" Nullable="false" />
+    <Property Name="CompanyProfileId" Type="int" Nullable="false" />
+    <Property Name="FairId" Type="int" Nullable="false" />
+    <Property Name="SaloonId" Type="int" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Interviewee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="IsInterviewee" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OfferDate" Type="date" Nullable="false" />
+    <Property Name="SaloonId" Type="int" Nullable="false" />
+    <Property Name="StandId" Type="int" Nullable="false" />
+    <Property Name="OfferSquare" Type="int" />
+    <Property Name="SquarePrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyId" Type="int" />
+    <Property Name="ExchangeRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MaturityNumber" Type="int" />
+    <Property Name="PaymentPlan" Type="nvarchar(max)" />
+    <Property Name="OfferDeadline" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParticipantHandbook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShippingDate" Type="date" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="DeliveryDate" Type="date" Nullable="false" />
+    <Property Name="FairId" Type="int" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="Features" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Profession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProfessionName" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesPerson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FairId" Type="int" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ContractId" Type="int" />
+    <Property Name="CommisionPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyId" Type="int" />
+  </EntityType>
+  <EntityType Name="Saloon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalonName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="SectorId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sector">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SectorAdı" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stand">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Width" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Height" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Area" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SaloonId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StandType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="510" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TicketType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AdditionalStandMaterial_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="AdditionalStandMaterial" Type="Self.AdditionalStandMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AdditionalStandMaterial">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AdditionalStandMaterial_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="AdditionalStandMaterial" Type="Self.AdditionalStandMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AdditionalStandMaterial">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AdditionalStandMaterial_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="AdditionalStandMaterial" Type="Self.AdditionalStandMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AdditionalStandMaterial">
+        <PropertyRef Name="SupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ADMFAPayment_AdditionalStandMaterial">
+    <End Role="AdditionalStandMaterial" Type="Self.AdditionalStandMaterial" Multiplicity="1" />
+    <End Role="ADMFAPayment" Type="Self.ADMFAPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdditionalStandMaterial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ADMFAPayment">
+        <PropertyRef Name="AdditionalStandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ADMFAPayment_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="ADMFAPayment" Type="Self.ADMFAPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ADMFAPayment">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ADMFAPayment_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="ADMFAPayment" Type="Self.ADMFAPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ADMFAPayment">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ADMFAPayment_FreeArea">
+    <End Role="FreeArea" Type="Self.FreeArea" Multiplicity="0..1" />
+    <End Role="ADMFAPayment" Type="Self.ADMFAPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FreeArea">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ADMFAPayment">
+        <PropertyRef Name="FreeAreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AppUserInformation_AppUsers">
+    <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="0..1" />
+    <End Role="AppUserInformation" Type="Self.AppUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AppUserInformation">
+        <PropertyRef Name="AppUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AppUserInformation_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="AppUserInformation" Type="Self.AppUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AppUserInformation">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AppUsers_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AppUsers">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CatalogInputForm_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CatalogInputForm" Type="Self.CatalogInputForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CatalogInputForm">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CatalogInputForm_CompanyProfile">
+    <End Role="CompanyProfile" Type="Self.CompanyProfile" Multiplicity="1" />
+    <End Role="CatalogInputForm" Type="Self.CatalogInputForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CatalogInputForm">
+        <PropertyRef Name="CompanyProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CatalogInputForm_ProductGroup">
+    <End Role="ProductGroup" Type="Self.ProductGroup" Multiplicity="1" />
+    <End Role="CatalogInputForm" Type="Self.CatalogInputForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CatalogInputForm">
+        <PropertyRef Name="ProductGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Sector">
+    <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sector">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="SectorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyContractPayment_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CompanyContractPayment" Type="Self.CompanyContractPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CompanyContractPayment">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyContractPayment_Contract">
+    <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
+    <End Role="CompanyContractPayment" Type="Self.CompanyContractPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CompanyContractPayment">
+        <PropertyRef Name="ContractId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyContractPayment_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="CompanyContractPayment" Type="Self.CompanyContractPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CompanyContractPayment">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyInformation_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="CompanyInformation" Type="Self.CompanyInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CompanyInformation">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyNeed_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="CompanyNeed" Type="Self.CompanyNeed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CompanyNeed">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_CompanyInformation">
+    <End Role="CompanyInformation" Type="Self.CompanyInformation" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyInformation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="CompanyInformationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_ContractType">
+    <End Role="ContractType" Type="Self.ContractType" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContractType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="ContractTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_SalesPerson">
+    <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesPerson">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="SalesPersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_Stand">
+    <End Role="Stand" Type="Self.Stand" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="StandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_StandType">
+    <End Role="StandType" Type="Self.StandType" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StandType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="StandTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fair_Saloon">
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="1" />
+    <End Role="Fair" Type="Self.Fair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fair">
+        <PropertyRef Name="SaloonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FreeArea_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="FreeArea" Type="Self.FreeArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FreeArea">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FreeArea_Contract">
+    <End Role="Contract" Type="Self.Contract" Multiplicity="0..1" />
+    <End Role="FreeArea" Type="Self.FreeArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FreeArea">
+        <PropertyRef Name="ContractId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guest_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Guest">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guest_Profession">
+    <End Role="Profession" Type="Self.Profession" Multiplicity="1" />
+    <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Guest">
+        <PropertyRef Name="ProfessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guest_TicketType">
+    <End Role="TicketType" Type="Self.TicketType" Multiplicity="1" />
+    <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TicketType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Guest">
+        <PropertyRef Name="TicketTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HiddenDiscount_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="HiddenDiscount" Type="Self.HiddenDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HiddenDiscount">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HiddenDiscount_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+    <End Role="HiddenDiscount" Type="Self.HiddenDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HiddenDiscount">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HiddenDiscount_Saloon">
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="1" />
+    <End Role="HiddenDiscount" Type="Self.HiddenDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HiddenDiscount">
+        <PropertyRef Name="SaloonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HiddenDiscount_Stand">
+    <End Role="Stand" Type="Self.Stand" Multiplicity="1" />
+    <End Role="HiddenDiscount" Type="Self.HiddenDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HiddenDiscount">
+        <PropertyRef Name="StandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_CompanyProfile">
+    <End Role="CompanyProfile" Type="Self.CompanyProfile" Multiplicity="1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="CompanyProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_Interviewee">
+    <End Role="Interviewee" Type="Self.Interviewee" Multiplicity="1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interviewee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="IntervieweeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_SalesPerson">
+    <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="0..1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesPerson">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="SalesPersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_Saloon">
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="SaloonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_Sector">
+    <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sector">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="SectorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interviewee_Company1">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="Interviewee" Type="Self.Interviewee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interviewee">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+    <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_Saloon">
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="1" />
+    <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="SaloonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_Stand">
+    <End Role="Stand" Type="Self.Stand" Multiplicity="1" />
+    <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="StandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticipantHandbook_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="ParticipantHandbook" Type="Self.ParticipantHandbook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ParticipantHandbook">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticipantHandbook_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="ParticipantHandbook" Type="Self.ParticipantHandbook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ParticipantHandbook">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticipantHandbook_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="ParticipantHandbook" Type="Self.ParticipantHandbook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ParticipantHandbook">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductGroup_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductGroup" Type="Self.ProductGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductGroup">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesPerson_Contract">
+    <End Role="Contract" Type="Self.Contract" Multiplicity="0..1" />
+    <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesPerson">
+        <PropertyRef Name="ContractId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesPerson_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+    <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesPerson">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesPerson_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="0..1" />
+    <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesPerson">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saloon_Sector">
+    <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sector">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Saloon">
+        <PropertyRef Name="SectorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stand_Saloon">
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="1" />
+    <End Role="Stand" Type="Self.Stand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stand">
+        <PropertyRef Name="SaloonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FairWorkDbModelStoreContainer">
+    <EntitySet Name="AdditionalStandMaterial" EntityType="Self.AdditionalStandMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ADMFAPayment" EntityType="Self.ADMFAPayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppUserInformation" EntityType="Self.AppUserInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppUsers" EntityType="Self.AppUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BudgetAndCurrentSale" EntityType="Self.BudgetAndCurrentSale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatalogInputForm" EntityType="Self.CatalogInputForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyContractPayment" EntityType="Self.CompanyContractPayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyInformation" EntityType="Self.CompanyInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyNeed" EntityType="Self.CompanyNeed" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyProfile" EntityType="Self.CompanyProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContractType" EntityType="Self.ContractType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fair" EntityType="Self.Fair" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FreeArea" EntityType="Self.FreeArea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HiddenDiscount" EntityType="Self.HiddenDiscount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Interview" EntityType="Self.Interview" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Interviewee" EntityType="Self.Interviewee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Offer" EntityType="Self.Offer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ParticipantHandbook" EntityType="Self.ParticipantHandbook" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductGroup" EntityType="Self.ProductGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profession" EntityType="Self.Profession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesPerson" EntityType="Self.SalesPerson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Saloon" EntityType="Self.Saloon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sector" EntityType="Self.Sector" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stand" EntityType="Self.Stand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StandType" EntityType="Self.StandType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketType" EntityType="Self.TicketType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AdditionalStandMaterial_Company" Association="Self.FK_AdditionalStandMaterial_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="AdditionalStandMaterial" EntitySet="AdditionalStandMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdditionalStandMaterial_Fair" Association="Self.FK_AdditionalStandMaterial_Fair">
+      <End Role="Fair" EntitySet="Fair" />
+      <End Role="AdditionalStandMaterial" EntitySet="AdditionalStandMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdditionalStandMaterial_Supplier" Association="Self.FK_AdditionalStandMaterial_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="AdditionalStandMaterial" EntitySet="AdditionalStandMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ADMFAPayment_AdditionalStandMaterial" Association="Self.FK_ADMFAPayment_AdditionalStandMaterial">
+      <End Role="AdditionalStandMaterial" EntitySet="AdditionalStandMaterial" />
+      <End Role="ADMFAPayment" EntitySet="ADMFAPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ADMFAPayment_Company" Association="Self.FK_ADMFAPayment_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="ADMFAPayment" EntitySet="ADMFAPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ADMFAPayment_Fair" Association="Self.FK_ADMFAPayment_Fair">
+      <End Role="Fair" EntitySet="Fair" />
+      <End Role="ADMFAPayment" EntitySet="ADMFAPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ADMFAPayment_FreeArea" Association="Self.FK_ADMFAPayment_FreeArea">
+      <End Role="FreeArea" EntitySet="FreeArea" />
+      <End Role="ADMFAPayment" EntitySet="ADMFAPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AppUserInformation_AppUsers" Association="Self.FK_AppUserInformation_AppUsers">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="AppUserInformation" EntitySet="AppUserInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AppUserInformation_Role" Association="Self.FK_AppUserInformation_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="AppUserInformation" EntitySet="AppUserInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AppUsers_Role" Association="Self.FK_AppUsers_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="AppUsers" EntitySet="AppUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CatalogInputForm_Company" Association="Self.FK_CatalogInputForm_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CatalogInputForm" EntitySet="CatalogInputForm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CatalogInputForm_CompanyProfile" Association="Self.FK_CatalogInputForm_CompanyProfile">
+      <End Role="CompanyProfile" EntitySet="CompanyProfile" />
+      <End Role="CatalogInputForm" EntitySet="CatalogInputForm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CatalogInputForm_ProductGroup" Association="Self.FK_CatalogInputForm_ProductGroup">
+      <End Role="ProductGroup" EntitySet="ProductGroup" />
+      <End Role="CatalogInputForm" EntitySet="CatalogInputForm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Country" Association="Self.FK_Company_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Fair" Association="Self.FK_Company_Fair">
+      <End Role="Fair" EntitySet="Fair" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Sector" Association="Self.FK_Company_Sector">
+      <End Role="Sector" EntitySet="Sector" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyContractPayment_Company" Association="Self.FK_CompanyContractPayment_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CompanyContractPayment" EntitySet="CompanyContractPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyContractPayment_Contract" Association="Self.FK_CompanyContractPayment_Contract">
+      <End Role="Contract" EntitySet="Contract" />
+      <End Role="CompanyContractPayment" EntitySet="CompanyContractPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyContractPayment_Fair" Association="Self.FK_CompanyContractPayment_Fair">
+      <End Role="Fair" EntitySet="Fair" />
+      <End Role="CompanyContractPayment" EntitySet="CompanyContractPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyInformation_Company" Association="Self.FK_CompanyInformation_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CompanyInformation" EntitySet="CompanyInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyNeed_Company" Association="Self.FK_CompanyNeed_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CompanyNeed" EntitySet="CompanyNeed" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_CompanyInformation" Association="Self.FK_Contract_CompanyInformation">
+      <End Role="CompanyInformation" EntitySet="CompanyInformation" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_ContractType" Association="Self.FK_Contract_ContractType">
+      <End Role="ContractType" EntitySet="ContractType" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_Currency" Association="Self.FK_Contract_Currency">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_SalesPerson" Association="Self.FK_Contract_SalesPerson">
+      <End Role="SalesPerson" EntitySet="SalesPerson" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_Stand" Association="Self.FK_Contract_Stand">
+      <End Role="Stand" EntitySet="Stand" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_StandType" Association="Self.FK_Contract_StandType">
+      <End Role="StandType" EntitySet="StandType" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fair_Saloon" Association="Self.FK_Fair_Saloon">
+      <End Role="Saloon" EntitySet="Saloon" />
+      <End Role="Fair" EntitySet="Fair" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FreeArea_Company" Association="Self.FK_FreeArea_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="FreeArea" EntitySet="FreeArea" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FreeArea_Contract" Association="Self.FK_FreeArea_Contract">
+      <End Role="Contract" EntitySet="Contract" />
+      <End Role="FreeArea" EntitySet="FreeArea" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guest_Fair" Association="Self.FK_Guest_Fair">
+      <End Role="Fair" EntitySet="Fair" />
+      <End Role="Guest" EntitySet="Guest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guest_Profession" Association="Self.FK_Guest_Profession">
+      <End Role="Profession" EntitySet="Profession" />
+      <End Role="Guest" EntitySet="Guest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guest_TicketType" Association="Self.FK_Guest_TicketType">
+      <End Role="TicketType" EntitySet="TicketType" />
+      <End Role="Guest" EntitySet="Guest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HiddenDiscount_Company" Association="Self.FK_HiddenDiscount_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="HiddenDiscount" EntitySet="HiddenDiscount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HiddenDiscount_Currency" Association="Self.FK_HiddenDiscount_Currency">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="HiddenDiscount" EntitySet="HiddenDiscount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HiddenDiscount_Saloon" Association="Self.FK_HiddenDiscount_Saloon">
+      <End Role="Saloon" EntitySet="Saloon" />
+      <End Role="HiddenDiscount" EntitySet="HiddenDiscount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HiddenDiscount_Stand" Association="Self.FK_HiddenDiscount_Stand">
+      <End Role="Stand" EntitySet="Stand" />
+      <End Role="HiddenDiscount" EntitySet="HiddenDiscount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_CompanyProfile" Association="Self.FK_Interview_CompanyProfile">
+      <End Role="CompanyProfile" EntitySet="CompanyProfile" />
+      <End Role="Interview" EntitySet="Interview" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_Fair" Association="Self.FK_Interview_Fair">
+      <End Role="Fair" EntitySet="Fair" />
+      <End Role="Interview" EntitySet="Interview" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_Interviewee" Association="Self.FK_Interview_Interviewee">
+      <End Role="Interviewee" EntitySet="Interviewee" />
+      <End Role="Interview" EntitySet="Interview" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_SalesPerson" Association="Self.FK_Interview_SalesPerson">
+      <End Role="SalesPerson" EntitySet="SalesPerson" />
+      <End Role="Interview" EntitySet="Interview" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_Saloon" Association="Self.FK_Interview_Saloon">
+      <End Role="Saloon" EntitySet="Saloon" />
+      <End Role="Interview" EntitySet="Interview" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_Sector" Association="Self.FK_Interview_Sector">
+      <End Role="Sector" EntitySet="Sector" />
+      <End Role="Interview" EntitySet="Interview" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interviewee_Company1" Association="Self.FK_Interviewee_Company1">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Interviewee" EntitySet="Interviewee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_Currency" Association="Self.FK_Offer_Currency">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="Offer" EntitySet="Offer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_Saloon" Association="Self.FK_Offer_Saloon">
+      <End Role="Saloon" EntitySet="Saloon" />
+      <End Role="Offer" EntitySet="Offer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_Stand" Association="Self.FK_Offer_Stand">
+      <End Role="Stand" EntitySet="Stand" />
+      <End Role="Offer" EntitySet="Offer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticipantHandbook_Company" Association="Self.FK_ParticipantHandbook_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="ParticipantHandbook" EntitySet="ParticipantHandbook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticipantHandbook_Employee" Association="Self.FK_ParticipantHandbook_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="ParticipantHandbook" EntitySet="ParticipantHandbook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticipantHandbook_Fair" Association="Self.FK_ParticipantHandbook_Fair">
+      <End Role="Fair" EntitySet="Fair" />
+      <End Role="ParticipantHandbook" EntitySet="ParticipantHandbook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductGroup_Product" Association="Self.FK_ProductGroup_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductGroup" EntitySet="ProductGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesPerson_Contract" Association="Self.FK_SalesPerson_Contract">
+      <End Role="Contract" EntitySet="Contract" />
+      <End Role="SalesPerson" EntitySet="SalesPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesPerson_Currency" Association="Self.FK_SalesPerson_Currency">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="SalesPerson" EntitySet="SalesPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesPerson_Fair" Association="Self.FK_SalesPerson_Fair">
+      <End Role="Fair" EntitySet="Fair" />
+      <End Role="SalesPerson" EntitySet="SalesPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saloon_Sector" Association="Self.FK_Saloon_Sector">
+      <End Role="Sector" EntitySet="Sector" />
+      <End Role="Saloon" EntitySet="Saloon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stand_Saloon" Association="Self.FK_Stand_Saloon">
+      <End Role="Saloon" EntitySet="Saloon" />
+      <End Role="Stand" EntitySet="Stand" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

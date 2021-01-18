@@ -1,0 +1,49 @@
+﻿@model List<ParticipantHandbook>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/OperationManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Katılımcı El Kitabı Gönderi Bilgileri";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card-dark">
+            <div class="card-header">
+                <h3 class="card-title">Katılımcı El Kitabı</h3>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Gönderi Tarihi</th>
+                            <th>Hangi Personel Tarafından</th>
+                            <th>Teslim Alınan Tarih</th>
+                            <th>Firma Bilgileri</th>
+                            <th>Katılacağı Fuar Bilgileri</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.ShippingDate.ToString("d")</td>
+                                <td>Sicil Numarası: @item.EmployeeId <br />@item.Employee.FullName (@item.Employee.Title)</td>
+                                <td>@item.DeliveryDate.ToString("d")</td>
+                                <td>@item.Company.CompanyName <br />@item.Company.CompanyOfficial<br />@item.Company.Phone<br />@item.Company.Email</td>
+                                <td>@item.Fair.FairName<br />@item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d")<br />@item.Fair.Address</td>
+                                <td>
+                                    @Html.ActionLink("Detay","Detay",new { id=item.ID},new { @class="btn btn-dark"})
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

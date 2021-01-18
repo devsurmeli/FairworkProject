@@ -1,0 +1,41 @@
+﻿@model List<Country>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Ülke Listesi";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-gray-dark">
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th style="width:auto">Ülke Adı</th>
+                            <th style="width:auto"></th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.CountryName</td>
+                                <td>
+                                    @Html.ActionLink("Ekle", "Add", "Country", null, new { @class = "btn btn-dark" })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

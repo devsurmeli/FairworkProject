@@ -1,0 +1,88 @@
+﻿@model ADMFAPayment
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "İlave Stand ve Boş Alan Ödeme Bilgisi Ekleme Sayfası";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group">
+                        <label>Firma Seç</label>
+                        @Html.DropDownList("CompanyId", (SelectList)ViewBag.Company, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fuarı Seç</label>
+                        @Html.DropDownList("FairId", (SelectList)ViewBag.Fair, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Boş Alan İstiyor Mu?</label>
+                        <div class="checkbox">
+                            @Html.EditorFor(x => x.FreeArea)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h5 style="color:red">Boş Alan İstiyormusunuz Sorusuna Cevabınız Evet İse Bu 2 Bilgiyi Cevaplayınız. False ise seçim yapmayınız.</h5><br />
+                        <label>Boş Alan Id Seçin</label>
+                        @Html.DropDownList("FreeAreaId", (SelectList)ViewBag.FreeArea, "", new { @class = "form-control" })
+                        <label>Boş Alan Toplam Fiyatı</label>
+                        @Html.TextBoxFor(x => x.FreeAreaTotalPrice, new { @class = "form-control", placeholder = "Boş Alanın toplam fiyatını yazın.." })
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label>İlave Stand Id Seç</label>
+                        @Html.DropDownList("AdditionalStandId", (SelectList)ViewBag.AdditionalStand, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>İlave Stand Toplam Fiyatı</label>
+                        @Html.TextBoxFor(x => x.AddiitionalStandTotalPrice, new { @class = "form-control", placeholder = "Stand toplam fiyatını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ödenen Tutar</label>
+                        @Html.TextBoxFor(x => x.AmountPaid, new { @class = "form-control", placeholder = "Ödenen tutar yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Kalan Tutar</label>
+                        @Html.TextBoxFor(x => x.AmountNotPaid, new { @class = "form-control", placeholder = "Kalan tutarı yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Toplam Fiyat</label>
+                        @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control", placeholder = "Standların toplam fiyati yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Dolar Değeri</label>
+                        @Html.TextBoxFor(x => x.DollarPrice, new { @class = "form-control", placeholder = "Dolar Tutarını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Euro Değeri</label>
+                        @Html.TextBoxFor(x => x.EuroPrice, new { @class = "form-control", placeholder = "Euro Tutarını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>TL Değeri</label>
+                        @Html.TextBoxFor(x => x.TurkıshLira, new { @class = "form-control", placeholder = "TL Tutarını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön", "Index", "ADMFAPayment", null, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

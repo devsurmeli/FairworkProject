@@ -1,0 +1,55 @@
+﻿@model Interviewee
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Görüşülecek Katılımcı Firma Yetkili Bilgilerini Güncelleme";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+                @using (Html.BeginForm("Update", "Interviewee", FormMethod.Post))
+                {
+                    @Html.HiddenFor(x=>x.ID)
+
+                    <div class="form-group">
+                        <label>Firma Seç</label>
+                        @Html.DropDownList("CompanyId", (SelectList)ViewBag.Company, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>ADı-Soyadı</label>
+                        @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", placeholder = "Ad-Soyadını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Unvanı</label>
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", placeholder = "Unvanını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefonu</label>
+                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", placeholder = "Firma telefonu yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Adresini</label>
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "Email adresini yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.IsInterviewee)
+                        <label>Görüşüldü mü?</label>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön", "Index", "Interviewee", null, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

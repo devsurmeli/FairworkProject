@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Banzhow</title>
+
+    <!-- font-awesome -->
+    <link href="~/Content/Public/css/font-awesome.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 7]>
+    <link href="css/font-awesome-ie7.css" rel="stylesheet">
+    <![endif]-->
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/Public/css/bootstrap.css" rel="stylesheet">
+
+    <!-- custom CSS -->
+    <link href="~/Content/Public/css/style.css" rel="stylesheet">
+    <!--[if lte IE 8]>
+    <link href="css/ie8.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <link href="css/ie7.css" rel="stylesheet">
+    <![endif]-->
+    <!-- JavaScript -->
+    <script type="text/javascript" src="~/Content/Public/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="~/Content/Public/js/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Content/Public/js/plugins.js"></script>
+    <!--[if lte IE 7]>
+    <script type="text/javascript" src="js/boxsizing/jquery.boxsizing.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="~/Content/Public/js/banzhow.js"></script>
+</head>
+
+
+<body>
+
+
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="/Home/Index">Fuar101</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Home/Index">Anasayfa</a></li>
+                    <li><a href="/Fair/Index">Fuar</a></li>
+                    <li><a href="/Company/Add">Katilimci Firma</a></li>
+                    <li><a href="/Guest/Add">Ziyaretçi</a></li>
+                    <li><a href="/We/Index">Biz Kimiz</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Yetkili Giriş<i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Security/Login">Giriş</a></li>
+                            <li><a href="/Security/LogOut">Çıkış</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <footer>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <a class="footer-brand" href="index.html">Fuar101</a>
+                    <p>Kendinisini tek bir amac ve bir hedef ugruna harcamis gecesini gunduzune katmis bir delikanli birakirayorum tam olarak da buraya.</p>
+                    
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <h3>İLETİSİM</h3>
+                    <address>
+                        <i class="fa fa-map-marker"></i> 123 My Street, Zaisso İst, İS 4567<br>
+                        <i class="fa fa-phone"></i> (535) 921-4882<br>
+                        <i class="fa fa-envelope"></i> isot.suurmeli44@gmail.com
+                    </address>
+                </div>
+
+                <div class="col-lg-3 col-md-3">
+                    <h3>LATEST TWEETS</h3>
+                    <ul class="latest-tweets">
+                        <li>
+                            <i class="fa fa-twitter"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar quam sed consequat adipiscing
+                        </li>
+                        <li>
+                            <i class="fa fa-twitter"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar quam sed consequat adipiscing
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-3">
+                    <h3>NEWSLETTER</h3>
+                    <p>Type your email address below and subscribe to our newsletter</p>
+                    <ul class="list-inline list-unstyled social-networks">
+                        <li>
+                            <a >
+                                <div class="icon-social icon-social-facebook normal">
+                                    <i class="fa fa-facebook"></i>
+                                </div>
+                                <div class="icon-social hover">
+                                    <i class="fa fa-facebook"></i>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a >
+                                <div class="icon-social icon-social-twitter normal">
+                                    <i class="fa fa-twitter"></i>
+                                </div>
+                                <div class="icon-social hover">
+                                    <i class="fa fa-twitter"></i>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a >
+                                <div class="icon-social icon-social-google-plus normal">
+                                    <i class="fa fa-google-plus"></i>
+                                </div>
+                                <div class="icon-social hover">
+                                    <i class="fa fa-google-plus"></i>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a >
+                                <div class="icon-social icon-social-youtube normal">
+                                    <i class="fa fa-youtube-play"></i>
+                                </div>
+                                <div class="icon-social hover">
+                                    <i class="fa fa-youtube-play"></i>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a >
+                                <div class="icon-social icon-social-linkedin normal">
+                                    <i class="fa fa-linkedin"></i>
+                                </div>
+                                <div class="icon-social hover">
+                                    <i class="fa fa-linkedin"></i>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a >
+                                <div class="icon-social icon-social-pinterest normal">
+                                    <i class="fa fa-pinterest"></i>
+                                </div>
+                                <div class="icon-social hover">
+                                    <i class="fa fa-pinterest"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-after">
+        <div class="container">
+            <div class="row">
+                <p class="col-md-10">©@DateTime.Now.ToString("Y")</p>
+                <p class="col-md-2 legal"><a href="#" rel="nofollow">Fuar101</a></p>
+            </div><!-- /.row -->
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+﻿@model List<ADMFAPayment>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Detay Sayfası";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>ID: <label style="color:darkred">@item.ID</label></h5></center><br />
+                <center>
+                    <h5>
+                        Firma ID: <label style="color:darkred"> @item.Company.ID</label><br />
+                        Firma Adı: <label style="color:darkred">@item.Company.CompanyName</label><br />
+                        Firma Yetkilisi: <label style="color:darkred">@item.Company.CompanyOfficial</label><br />
+                        Firma Unvanı: <label style="color:darkred">@item.Company.Title</label><br />
+                        Firma Telefonu: <label style="color:darkred">@item.Company.Phone</label><br />
+                        Firma Emaili: <label style="color:darkred">@item.Company.Email</label><br />
+                        Firma Fax: <label style="color:darkred">@item.Company.Fax</label><br />
+                        Firma Addresi: <label style="color:darkred">@item.Company.Address</label><br />
+                        Firma Ülkesi: <label style="color:darkred">@item.Company.Country.CountryName</label><br />
+                        Firma Sectorü: <label style="color:darkred">@item.Company.Sector.SectorAdı</label><br />
+                        Firmanın Katıldığı Fuar Sayısı: <label style="color:darkred">@item.Company.FairAttendance</label><br />
+                    </h5>
+                </center><br />
+                <center>
+                    <h5>
+                        Fuar ID: <label style="color:darkred">@item.Fair.ID</label><br />
+                        Fuar Adı: <label style="color:darkred">@item.Fair.FairName</label><br />
+                        Fuar Başlama-Bitiş Tarihi: <label style="color:darkred">@item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d")</label><br />
+                        Fuar Adresi: <label style="color:darkred">@item.Fair.Address</label><br />
+                    </h5>
+                </center><br />
+                <center><h5>Boş Alan İhtiyacı Var Mı? :<label style="color:darkred">@item.FreeArea</label></h5></center><br />
+                <center><h5>Boş Alan Bilgileri :<label style="color:darkred">@item.FreeAreaId</label></h5></center><br />
+                <center><h5>Boş Alan Toplam Fiyat : <label style="color:darkred">@item.FreeAreaTotalPrice</label></h5></center><br />
+                <center><h5>İlave Stand Bilgileri: <label style="color:darkred">@item.AdditionalStandId</label></h5></center><br />
+                <center><h5>Sipariş Edilen Stand Toplamı:<label style="color:darkred">@item.AddiitionalStandTotalPrice</label></h5></center><br />
+                <center><h5>Ödediği Tutar :<label style="color:darkred">@item.AmountPaid</label></h5></center><br />
+                <center><h5>Kalan Tutar :<label style="color:darkred">@item.AmountNotPaid</label></h5></center><br />
+                <center><h5>Toplam Tutar :<label style="color:darkred">@item.TotalPrice</label></h5></center><br />
+                <center><h5>Dolar Tutar :<label style="color:darkred">@item.DollarPrice</label></h5></center><br />
+                <center><h5>Euro Tutar :<label style="color:darkred">@item.EuroPrice</label></h5></center><br />
+                <center><h5>TL Tutar :<label style="color:darkred">@item.TurkıshLira</label></h5></center><br />
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "ADMFAPayment", null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>
+

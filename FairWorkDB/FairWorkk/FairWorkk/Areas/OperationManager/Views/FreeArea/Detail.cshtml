@@ -1,0 +1,51 @@
+﻿@model List<FreeArea>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/OperationManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Boş Alan Detay";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>ID: <label style="color:darkred">@item.ID</label></h5></center><br />
+                <center>
+                    <h5>
+                        Firma ID: <label style="color:darkred"> @item.Company.ID</label><br />
+                        Firma Adı: <label style="color:darkred">@item.Company.CompanyName</label><br />
+                        Firma Yetkilisi: <label style="color:darkred">@item.Company.CompanyOfficial</label><br />
+                        Firma Unvanı: <label style="color:darkred">@item.Company.Title</label><br />
+                        Firma Telefonu: <label style="color:darkred">@item.Company.Phone</label><br />
+                        Firma Emaili: <label style="color:darkred">@item.Company.Email</label><br />
+                        Firma Fax: <label style="color:darkred">@item.Company.Fax</label><br />
+                        Firma Addresi: <label style="color:darkred">@item.Company.Address</label><br />
+                        Firma Ülkesi: <label style="color:darkred">@item.Company.Country.CountryName</label><br />
+                        Firma Sectorü: <label style="color:darkred">@item.Company.Sector.SectorAdı</label><br />
+                        Firmanın Katıldığı Fuar Sayısı: <label style="color:darkred">@item.Company.FairAttendance</label><br />
+                    </h5>
+                </center><br />
+                <center><h5>Elektirik İhtiyacı Var Mı? :<label style="color:darkred">@item.Electric</label></h5></center>
+                <center><h5>Miktari :<label style="color:darkred">@item.KWNeed</label></h5></center>
+                <center><h5>Fiyat : <label style="color:darkred">@item.KWPrice$</label></h5></center><br />
+                <center><h5>Su İhtiyacı Var Mı? :<label style="color:darkred">@item.Water</label></h5></center>
+                <center><h5>Miktari :<label style="color:darkred">@item.LTNeed</label></h5></center>
+                <center><h5>Fiyat : <label style="color:darkred">@item.LTPrice$</label></h5></center><br />
+                <center><h5>Atık Su İhtiyacı Var Mı? :<label style="color:darkred">@item.WasteWater</label></h5></center>
+                <center><h5>Miktari :<label style="color:darkred">@item.WLTNeed</label></h5></center>
+                <center><h5>Fiyat : <label style="color:darkred">@item.WLTPrice$</label></h5></center><br />
+                <center><h5>Basınçlı Hava İhtiyacı Var Mı? :<label style="color:darkred">@item.CompressedAir</label></h5></center>
+                <center><h5>Miktari :<label style="color:darkred">@item.AirNeed</label></h5></center>
+                <center><h5>Fiyat : <label style="color:darkred">@item.AirPrice$</label></h5></center><br />
+                <center><h5>Toplam Fiyat : <label style="color:darkred">@item.TotalPrice$</label></h5></center><br />
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "FreeArea", null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>
+

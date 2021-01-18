@@ -1,0 +1,1475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FairWorkDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdditionalStandMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="FairId" Type="Int32" Nullable="false" />
+    <Property Name="StandName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StandCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StandPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="StandFeatures" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SupplierId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_AdditionalStandMaterial_Company" FromRole="AdditionalStandMaterial" ToRole="Company" />
+    <NavigationProperty Name="Fair" Relationship="Self.FK_AdditionalStandMaterial_Fair" FromRole="AdditionalStandMaterial" ToRole="Fair" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_AdditionalStandMaterial_Supplier" FromRole="AdditionalStandMaterial" ToRole="Supplier" />
+    <NavigationProperty Name="ADMFAPayments" Relationship="Self.FK_ADMFAPayment_AdditionalStandMaterial" FromRole="AdditionalStandMaterial" ToRole="ADMFAPayment" />
+  </EntityType>
+  <EntityType Name="ADMFAPayment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="FairId" Type="Int32" Nullable="false" />
+    <Property Name="FreeArea" Type="Boolean" />
+    <Property Name="FreeAreaId" Type="Int32" />
+    <Property Name="FreeAreaTotalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AdditionalStandId" Type="Int32" Nullable="false" />
+    <Property Name="AddiitionalStandTotalPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AmountNotPaid" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DollarPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="EuroPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TurkıshLira" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="AdditionalStandMaterial" Relationship="Self.FK_ADMFAPayment_AdditionalStandMaterial" FromRole="ADMFAPayment" ToRole="AdditionalStandMaterial" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_ADMFAPayment_Company" FromRole="ADMFAPayment" ToRole="Company" />
+    <NavigationProperty Name="Fair" Relationship="Self.FK_ADMFAPayment_Fair" FromRole="ADMFAPayment" ToRole="Fair" />
+    <NavigationProperty Name="FreeArea1" Relationship="Self.FK_ADMFAPayment_FreeArea" FromRole="ADMFAPayment" ToRole="FreeArea" />
+  </EntityType>
+  <EntityType Name="AppUserInformation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="AppUserId" Type="Int32" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK_AppUserInformation_AppUsers" FromRole="AppUserInformation" ToRole="AppUsers" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_AppUserInformation_Role" FromRole="AppUserInformation" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="AppUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="AppUserInformations" Relationship="Self.FK_AppUserInformation_AppUsers" FromRole="AppUsers" ToRole="AppUserInformation" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_AppUsers_Role" FromRole="AppUsers" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="BudgetAndCurrentSale">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ContractTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AdditionalStandTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="OtherTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ComisyonTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="KDVTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CorporateTaxTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ReserveFundTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DollarTotal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="EuroTotal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TurkıshLiraTotal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DollarExchangeRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="EuroExchangeRate" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="CatalogInputForm">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="ProductGroupId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyProfileId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_CatalogInputForm_Company" FromRole="CatalogInputForm" ToRole="Company" />
+    <NavigationProperty Name="CompanyProfile" Relationship="Self.FK_CatalogInputForm_CompanyProfile" FromRole="CatalogInputForm" ToRole="CompanyProfile" />
+    <NavigationProperty Name="ProductGroup" Relationship="Self.FK_CatalogInputForm_ProductGroup" FromRole="CatalogInputForm" ToRole="ProductGroup" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CompanyOfficial" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Intercom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="SectorId" Type="Int32" Nullable="false" />
+    <Property Name="FairId" Type="Int32" Nullable="false" />
+    <Property Name="FairAttendance" Type="Int32" />
+    <NavigationProperty Name="AdditionalStandMaterials" Relationship="Self.FK_AdditionalStandMaterial_Company" FromRole="Company" ToRole="AdditionalStandMaterial" />
+    <NavigationProperty Name="ADMFAPayments" Relationship="Self.FK_ADMFAPayment_Company" FromRole="Company" ToRole="ADMFAPayment" />
+    <NavigationProperty Name="CatalogInputForms" Relationship="Self.FK_CatalogInputForm_Company" FromRole="Company" ToRole="CatalogInputForm" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Company_Country" FromRole="Company" ToRole="Country" />
+    <NavigationProperty Name="Fair" Relationship="Self.FK_Company_Fair" FromRole="Company" ToRole="Fair" />
+    <NavigationProperty Name="Sector" Relationship="Self.FK_Company_Sector" FromRole="Company" ToRole="Sector" />
+    <NavigationProperty Name="CompanyContractPayments" Relationship="Self.FK_CompanyContractPayment_Company" FromRole="Company" ToRole="CompanyContractPayment" />
+    <NavigationProperty Name="CompanyInformations" Relationship="Self.FK_CompanyInformation_Company" FromRole="Company" ToRole="CompanyInformation" />
+    <NavigationProperty Name="CompanyNeeds" Relationship="Self.FK_CompanyNeed_Company" FromRole="Company" ToRole="CompanyNeed" />
+    <NavigationProperty Name="FreeAreas" Relationship="Self.FK_FreeArea_Company" FromRole="Company" ToRole="FreeArea" />
+    <NavigationProperty Name="HiddenDiscounts" Relationship="Self.FK_HiddenDiscount_Company" FromRole="Company" ToRole="HiddenDiscount" />
+    <NavigationProperty Name="Interviewees" Relationship="Self.FK_Interviewee_Company1" FromRole="Company" ToRole="Interviewee" />
+    <NavigationProperty Name="ParticipantHandbooks" Relationship="Self.FK_ParticipantHandbook_Company" FromRole="Company" ToRole="ParticipantHandbook" />
+  </EntityType>
+  <EntityType Name="CompanyContractPayment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="FairId" Type="Int32" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AmountNotPaid" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DollarPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="EuroPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TurkıshLira" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_CompanyContractPayment_Company" FromRole="CompanyContractPayment" ToRole="Company" />
+    <NavigationProperty Name="Contract" Relationship="Self.FK_CompanyContractPayment_Contract" FromRole="CompanyContractPayment" ToRole="Contract" />
+    <NavigationProperty Name="Fair" Relationship="Self.FK_CompanyContractPayment_Fair" FromRole="CompanyContractPayment" ToRole="Fair" />
+  </EntityType>
+  <EntityType Name="CompanyInformation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="Adress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaxAuthority" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FairOfficial" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_CompanyInformation_Company" FromRole="CompanyInformation" ToRole="Company" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_Contract_CompanyInformation" FromRole="CompanyInformation" ToRole="Contract" />
+  </EntityType>
+  <EntityType Name="CompanyNeed">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="InvitationNumber" Type="Int16" />
+    <Property Name="PosterNumber" Type="Int16" />
+    <Property Name="PersonelEntryCardNumber" Type="Int16" />
+    <Property Name="StaffParkingEntryCardNumber" Type="Int16" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_CompanyNeed_Company" FromRole="CompanyNeed" ToRole="Company" />
+  </EntityType>
+  <EntityType Name="CompanyProfile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProfileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CatalogInputForms" Relationship="Self.FK_CatalogInputForm_CompanyProfile" FromRole="CompanyProfile" ToRole="CatalogInputForm" />
+    <NavigationProperty Name="Interviews" Relationship="Self.FK_Interview_CompanyProfile" FromRole="CompanyProfile" ToRole="Interview" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SalesPersonId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyInformationId" Type="Int32" Nullable="false" />
+    <Property Name="ContractTypeId" Type="Int32" Nullable="false" />
+    <Property Name="StandTypeId" Type="Int32" Nullable="false" />
+    <Property Name="StandId" Type="Int32" Nullable="false" />
+    <Property Name="SquarePrice" Type="Int32" />
+    <Property Name="CurrencyId" Type="Int32" />
+    <Property Name="EcxhangeRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DiscountRate" Type="Int32" Nullable="false" />
+    <Property Name="MaturityNumber" Type="Int32" />
+    <Property Name="PaymentPlan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ContractDeadline" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ContractSigned" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CompanyContractPayments" Relationship="Self.FK_CompanyContractPayment_Contract" FromRole="Contract" ToRole="CompanyContractPayment" />
+    <NavigationProperty Name="CompanyInformation" Relationship="Self.FK_Contract_CompanyInformation" FromRole="Contract" ToRole="CompanyInformation" />
+    <NavigationProperty Name="ContractType" Relationship="Self.FK_Contract_ContractType" FromRole="Contract" ToRole="ContractType" />
+    <NavigationProperty Name="Currency" Relationship="Self.FK_Contract_Currency" FromRole="Contract" ToRole="Currency" />
+    <NavigationProperty Name="SalesPerson" Relationship="Self.FK_Contract_SalesPerson" FromRole="Contract" ToRole="SalesPerson" />
+    <NavigationProperty Name="Stand" Relationship="Self.FK_Contract_Stand" FromRole="Contract" ToRole="Stand" />
+    <NavigationProperty Name="StandType" Relationship="Self.FK_Contract_StandType" FromRole="Contract" ToRole="StandType" />
+    <NavigationProperty Name="FreeAreas" Relationship="Self.FK_FreeArea_Contract" FromRole="Contract" ToRole="FreeArea" />
+    <NavigationProperty Name="SalesPersons" Relationship="Self.FK_SalesPerson_Contract" FromRole="Contract" ToRole="SalesPerson" />
+  </EntityType>
+  <EntityType Name="ContractType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_Contract_ContractType" FromRole="ContractType" ToRole="Contract" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_Company_Country" FromRole="Country" ToRole="Company" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_Contract_Currency" FromRole="Currency" ToRole="Contract" />
+    <NavigationProperty Name="HiddenDiscounts" Relationship="Self.FK_HiddenDiscount_Currency" FromRole="Currency" ToRole="HiddenDiscount" />
+    <NavigationProperty Name="Offers" Relationship="Self.FK_Offer_Currency" FromRole="Currency" ToRole="Offer" />
+    <NavigationProperty Name="SalesPersons" Relationship="Self.FK_SalesPerson_Currency" FromRole="Currency" ToRole="SalesPerson" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DepartmanName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ParticipantHandbooks" Relationship="Self.FK_ParticipantHandbook_Employee" FromRole="Employee" ToRole="ParticipantHandbook" />
+  </EntityType>
+  <EntityType Name="Fair">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FairName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FinishDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SaloonId" Type="Int32" Nullable="false" />
+    <Property Name="FairPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ImagePat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AdditionalStandMaterials" Relationship="Self.FK_AdditionalStandMaterial_Fair" FromRole="Fair" ToRole="AdditionalStandMaterial" />
+    <NavigationProperty Name="ADMFAPayments" Relationship="Self.FK_ADMFAPayment_Fair" FromRole="Fair" ToRole="ADMFAPayment" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_Company_Fair" FromRole="Fair" ToRole="Company" />
+    <NavigationProperty Name="CompanyContractPayments" Relationship="Self.FK_CompanyContractPayment_Fair" FromRole="Fair" ToRole="CompanyContractPayment" />
+    <NavigationProperty Name="Saloon" Relationship="Self.FK_Fair_Saloon" FromRole="Fair" ToRole="Saloon" />
+    <NavigationProperty Name="Guests" Relationship="Self.FK_Guest_Fair" FromRole="Fair" ToRole="Guest" />
+    <NavigationProperty Name="Interviews" Relationship="Self.FK_Interview_Fair" FromRole="Fair" ToRole="Interview" />
+    <NavigationProperty Name="ParticipantHandbooks" Relationship="Self.FK_ParticipantHandbook_Fair" FromRole="Fair" ToRole="ParticipantHandbook" />
+    <NavigationProperty Name="SalesPersons" Relationship="Self.FK_SalesPerson_Fair" FromRole="Fair" ToRole="SalesPerson" />
+  </EntityType>
+  <EntityType Name="FreeArea">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="ContractId" Type="Int32" />
+    <Property Name="Electric" Type="Boolean" Nullable="false" />
+    <Property Name="KWNeed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KWPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Water" Type="Boolean" Nullable="false" />
+    <Property Name="LTNeed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LTPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="WasteWater" Type="Boolean" Nullable="false" />
+    <Property Name="WLTNeed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WLTPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CompressedAir" Type="Boolean" Nullable="false" />
+    <Property Name="AirNeed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AirPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="ADMFAPayments" Relationship="Self.FK_ADMFAPayment_FreeArea" FromRole="FreeArea" ToRole="ADMFAPayment" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_FreeArea_Company" FromRole="FreeArea" ToRole="Company" />
+    <NavigationProperty Name="Contract" Relationship="Self.FK_FreeArea_Contract" FromRole="FreeArea" ToRole="Contract" />
+  </EntityType>
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProfessionId" Type="Int32" Nullable="false" />
+    <Property Name="TicketTypeId" Type="Int32" Nullable="false" />
+    <Property Name="FairId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Fair" Relationship="Self.FK_Guest_Fair" FromRole="Guest" ToRole="Fair" />
+    <NavigationProperty Name="Profession" Relationship="Self.FK_Guest_Profession" FromRole="Guest" ToRole="Profession" />
+    <NavigationProperty Name="TicketType" Relationship="Self.FK_Guest_TicketType" FromRole="Guest" ToRole="TicketType" />
+    <Property Name="QrCodeImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HiddenDiscount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="SaloonId" Type="Int32" Nullable="false" />
+    <Property Name="StandId" Type="Int32" Nullable="false" />
+    <Property Name="Width" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+    <Property Name="ExchangeRate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MeterPrice" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_HiddenDiscount_Company" FromRole="HiddenDiscount" ToRole="Company" />
+    <NavigationProperty Name="Currency" Relationship="Self.FK_HiddenDiscount_Currency" FromRole="HiddenDiscount" ToRole="Currency" />
+    <NavigationProperty Name="Saloon" Relationship="Self.FK_HiddenDiscount_Saloon" FromRole="HiddenDiscount" ToRole="Saloon" />
+    <NavigationProperty Name="Stand" Relationship="Self.FK_HiddenDiscount_Stand" FromRole="HiddenDiscount" ToRole="Stand" />
+  </EntityType>
+  <EntityType Name="Interview">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalesPersonId" Type="Int32" />
+    <Property Name="OfferDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IntervieweeId" Type="Int32" Nullable="false" />
+    <Property Name="SectorId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyProfileId" Type="Int32" Nullable="false" />
+    <Property Name="FairId" Type="Int32" Nullable="false" />
+    <Property Name="SaloonId" Type="Int32" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CompanyProfile" Relationship="Self.FK_Interview_CompanyProfile" FromRole="Interview" ToRole="CompanyProfile" />
+    <NavigationProperty Name="Fair" Relationship="Self.FK_Interview_Fair" FromRole="Interview" ToRole="Fair" />
+    <NavigationProperty Name="Interviewee" Relationship="Self.FK_Interview_Interviewee" FromRole="Interview" ToRole="Interviewee" />
+    <NavigationProperty Name="SalesPerson" Relationship="Self.FK_Interview_SalesPerson" FromRole="Interview" ToRole="SalesPerson" />
+    <NavigationProperty Name="Saloon" Relationship="Self.FK_Interview_Saloon" FromRole="Interview" ToRole="Saloon" />
+    <NavigationProperty Name="Sector" Relationship="Self.FK_Interview_Sector" FromRole="Interview" ToRole="Sector" />
+  </EntityType>
+  <EntityType Name="Interviewee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsInterviewee" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_Interviewee_Company1" FromRole="Interviewee" ToRole="Company" />
+    <NavigationProperty Name="Interviews" Relationship="Self.FK_Interview_Interviewee" FromRole="Interviewee" ToRole="Interview" />
+  </EntityType>
+  <EntityType Name="Offer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OfferDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SaloonId" Type="Int32" Nullable="false" />
+    <Property Name="StandId" Type="Int32" Nullable="false" />
+    <Property Name="OfferSquare" Type="Int32" />
+    <Property Name="SquarePrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyId" Type="Int32" />
+    <Property Name="ExchangeRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MaturityNumber" Type="Int32" />
+    <Property Name="PaymentPlan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OfferDeadline" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Currency" Relationship="Self.FK_Offer_Currency" FromRole="Offer" ToRole="Currency" />
+    <NavigationProperty Name="Saloon" Relationship="Self.FK_Offer_Saloon" FromRole="Offer" ToRole="Saloon" />
+    <NavigationProperty Name="Stand" Relationship="Self.FK_Offer_Stand" FromRole="Offer" ToRole="Stand" />
+  </EntityType>
+  <EntityType Name="ParticipantHandbook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShippingDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FairId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_ParticipantHandbook_Company" FromRole="ParticipantHandbook" ToRole="Company" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_ParticipantHandbook_Employee" FromRole="ParticipantHandbook" ToRole="Employee" />
+    <NavigationProperty Name="Fair" Relationship="Self.FK_ParticipantHandbook_Fair" FromRole="ParticipantHandbook" ToRole="Fair" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="Features" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProductGroups" Relationship="Self.FK_ProductGroup_Product" FromRole="Product" ToRole="ProductGroup" />
+  </EntityType>
+  <EntityType Name="ProductGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CatalogInputForms" Relationship="Self.FK_CatalogInputForm_ProductGroup" FromRole="ProductGroup" ToRole="CatalogInputForm" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_ProductGroup_Product" FromRole="ProductGroup" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Profession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProfessionName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Guests" Relationship="Self.FK_Guest_Profession" FromRole="Profession" ToRole="Guest" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AppUserInformations" Relationship="Self.FK_AppUserInformation_Role" FromRole="Role" ToRole="AppUserInformation" />
+    <NavigationProperty Name="AppUsers" Relationship="Self.FK_AppUsers_Role" FromRole="Role" ToRole="AppUsers" />
+  </EntityType>
+  <EntityType Name="SalesPerson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FairId" Type="Int32" />
+    <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContractId" Type="Int32" />
+    <Property Name="CommisionPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyId" Type="Int32" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_Contract_SalesPerson" FromRole="SalesPerson" ToRole="Contract" />
+    <NavigationProperty Name="Contract" Relationship="Self.FK_SalesPerson_Contract" FromRole="SalesPerson" ToRole="Contract" />
+    <NavigationProperty Name="Currency" Relationship="Self.FK_SalesPerson_Currency" FromRole="SalesPerson" ToRole="Currency" />
+    <NavigationProperty Name="Fair" Relationship="Self.FK_SalesPerson_Fair" FromRole="SalesPerson" ToRole="Fair" />
+    <NavigationProperty Name="Interviews" Relationship="Self.FK_Interview_SalesPerson" FromRole="SalesPerson" ToRole="Interview" />
+  </EntityType>
+  <EntityType Name="Saloon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalonName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SectorId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Fairs" Relationship="Self.FK_Fair_Saloon" FromRole="Saloon" ToRole="Fair" />
+    <NavigationProperty Name="HiddenDiscounts" Relationship="Self.FK_HiddenDiscount_Saloon" FromRole="Saloon" ToRole="HiddenDiscount" />
+    <NavigationProperty Name="Interviews" Relationship="Self.FK_Interview_Saloon" FromRole="Saloon" ToRole="Interview" />
+    <NavigationProperty Name="Offers" Relationship="Self.FK_Offer_Saloon" FromRole="Saloon" ToRole="Offer" />
+    <NavigationProperty Name="Sector" Relationship="Self.FK_Saloon_Sector" FromRole="Saloon" ToRole="Sector" />
+    <NavigationProperty Name="Stands" Relationship="Self.FK_Stand_Saloon" FromRole="Saloon" ToRole="Stand" />
+  </EntityType>
+  <EntityType Name="Sector">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SectorAdı" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_Company_Sector" FromRole="Sector" ToRole="Company" />
+    <NavigationProperty Name="Interviews" Relationship="Self.FK_Interview_Sector" FromRole="Sector" ToRole="Interview" />
+    <NavigationProperty Name="Saloons" Relationship="Self.FK_Saloon_Sector" FromRole="Sector" ToRole="Saloon" />
+  </EntityType>
+  <EntityType Name="Stand">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Width" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Height" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SaloonId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_Contract_Stand" FromRole="Stand" ToRole="Contract" />
+    <NavigationProperty Name="HiddenDiscounts" Relationship="Self.FK_HiddenDiscount_Stand" FromRole="Stand" ToRole="HiddenDiscount" />
+    <NavigationProperty Name="Offers" Relationship="Self.FK_Offer_Stand" FromRole="Stand" ToRole="Offer" />
+    <NavigationProperty Name="Saloon" Relationship="Self.FK_Stand_Saloon" FromRole="Stand" ToRole="Saloon" />
+  </EntityType>
+  <EntityType Name="StandType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_Contract_StandType" FromRole="StandType" ToRole="Contract" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="510" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AdditionalStandMaterials" Relationship="Self.FK_AdditionalStandMaterial_Supplier" FromRole="Supplier" ToRole="AdditionalStandMaterial" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TicketType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Guests" Relationship="Self.FK_Guest_TicketType" FromRole="TicketType" ToRole="Guest" />
+  </EntityType>
+  <Association Name="FK_AdditionalStandMaterial_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="AdditionalStandMaterial" Type="Self.AdditionalStandMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AdditionalStandMaterial">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AdditionalStandMaterial_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="AdditionalStandMaterial" Type="Self.AdditionalStandMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AdditionalStandMaterial">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AdditionalStandMaterial_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="AdditionalStandMaterial" Type="Self.AdditionalStandMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AdditionalStandMaterial">
+        <PropertyRef Name="SupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ADMFAPayment_AdditionalStandMaterial">
+    <End Role="AdditionalStandMaterial" Type="Self.AdditionalStandMaterial" Multiplicity="1" />
+    <End Role="ADMFAPayment" Type="Self.ADMFAPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdditionalStandMaterial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ADMFAPayment">
+        <PropertyRef Name="AdditionalStandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ADMFAPayment_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="ADMFAPayment" Type="Self.ADMFAPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ADMFAPayment">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ADMFAPayment_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="ADMFAPayment" Type="Self.ADMFAPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ADMFAPayment">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ADMFAPayment_FreeArea">
+    <End Role="FreeArea" Type="Self.FreeArea" Multiplicity="0..1" />
+    <End Role="ADMFAPayment" Type="Self.ADMFAPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FreeArea">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ADMFAPayment">
+        <PropertyRef Name="FreeAreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AppUserInformation_AppUsers">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="AppUserInformation" Type="Self.AppUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AppUserInformation">
+        <PropertyRef Name="AppUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AppUserInformation_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="AppUserInformation" Type="Self.AppUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AppUserInformation">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AppUsers_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AppUsers">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CatalogInputForm_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CatalogInputForm" Type="Self.CatalogInputForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CatalogInputForm">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CatalogInputForm_CompanyProfile">
+    <End Role="CompanyProfile" Type="Self.CompanyProfile" Multiplicity="1" />
+    <End Role="CatalogInputForm" Type="Self.CatalogInputForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CatalogInputForm">
+        <PropertyRef Name="CompanyProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CatalogInputForm_ProductGroup">
+    <End Role="ProductGroup" Type="Self.ProductGroup" Multiplicity="1" />
+    <End Role="CatalogInputForm" Type="Self.CatalogInputForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CatalogInputForm">
+        <PropertyRef Name="ProductGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Sector">
+    <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sector">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="SectorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyContractPayment_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CompanyContractPayment" Type="Self.CompanyContractPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CompanyContractPayment">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyInformation_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="CompanyInformation" Type="Self.CompanyInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CompanyInformation">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyNeed_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="CompanyNeed" Type="Self.CompanyNeed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CompanyNeed">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FreeArea_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="FreeArea" Type="Self.FreeArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FreeArea">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HiddenDiscount_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="HiddenDiscount" Type="Self.HiddenDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HiddenDiscount">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interviewee_Company1">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="Interviewee" Type="Self.Interviewee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interviewee">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticipantHandbook_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="ParticipantHandbook" Type="Self.ParticipantHandbook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ParticipantHandbook">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyContractPayment_Contract">
+    <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
+    <End Role="CompanyContractPayment" Type="Self.CompanyContractPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CompanyContractPayment">
+        <PropertyRef Name="ContractId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyContractPayment_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="CompanyContractPayment" Type="Self.CompanyContractPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CompanyContractPayment">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_CompanyInformation">
+    <End Role="CompanyInformation" Type="Self.CompanyInformation" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyInformation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="CompanyInformationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_CompanyProfile">
+    <End Role="CompanyProfile" Type="Self.CompanyProfile" Multiplicity="1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="CompanyProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_ContractType">
+    <End Role="ContractType" Type="Self.ContractType" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContractType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="ContractTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_SalesPerson">
+    <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesPerson">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="SalesPersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_Stand">
+    <End Role="Stand" Type="Self.Stand" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="StandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_StandType">
+    <End Role="StandType" Type="Self.StandType" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StandType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="StandTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FreeArea_Contract">
+    <End Role="Contract" Type="Self.Contract" Multiplicity="0..1" />
+    <End Role="FreeArea" Type="Self.FreeArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FreeArea">
+        <PropertyRef Name="ContractId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesPerson_Contract">
+    <End Role="Contract" Type="Self.Contract" Multiplicity="0..1" />
+    <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesPerson">
+        <PropertyRef Name="ContractId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HiddenDiscount_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+    <End Role="HiddenDiscount" Type="Self.HiddenDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HiddenDiscount">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+    <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesPerson_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+    <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesPerson">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticipantHandbook_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="ParticipantHandbook" Type="Self.ParticipantHandbook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ParticipantHandbook">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fair_Saloon">
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="1" />
+    <End Role="Fair" Type="Self.Fair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fair">
+        <PropertyRef Name="SaloonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guest_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Guest">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticipantHandbook_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="1" />
+    <End Role="ParticipantHandbook" Type="Self.ParticipantHandbook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ParticipantHandbook">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesPerson_Fair">
+    <End Role="Fair" Type="Self.Fair" Multiplicity="0..1" />
+    <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fair">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesPerson">
+        <PropertyRef Name="FairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guest_Profession">
+    <End Role="Profession" Type="Self.Profession" Multiplicity="1" />
+    <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Guest">
+        <PropertyRef Name="ProfessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guest_TicketType">
+    <End Role="TicketType" Type="Self.TicketType" Multiplicity="1" />
+    <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TicketType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Guest">
+        <PropertyRef Name="TicketTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HiddenDiscount_Saloon">
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="1" />
+    <End Role="HiddenDiscount" Type="Self.HiddenDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HiddenDiscount">
+        <PropertyRef Name="SaloonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HiddenDiscount_Stand">
+    <End Role="Stand" Type="Self.Stand" Multiplicity="1" />
+    <End Role="HiddenDiscount" Type="Self.HiddenDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HiddenDiscount">
+        <PropertyRef Name="StandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_Interviewee">
+    <End Role="Interviewee" Type="Self.Interviewee" Multiplicity="1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interviewee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="IntervieweeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_SalesPerson">
+    <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="0..1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesPerson">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="SalesPersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_Saloon">
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="SaloonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interview_Sector">
+    <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
+    <End Role="Interview" Type="Self.Interview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sector">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Interview">
+        <PropertyRef Name="SectorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_Saloon">
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="1" />
+    <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="SaloonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_Stand">
+    <End Role="Stand" Type="Self.Stand" Multiplicity="1" />
+    <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="StandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductGroup_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductGroup" Type="Self.ProductGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductGroup">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saloon_Sector">
+    <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sector">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Saloon">
+        <PropertyRef Name="SectorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stand_Saloon">
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="1" />
+    <End Role="Stand" Type="Self.Stand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stand">
+        <PropertyRef Name="SaloonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FairWorkDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdditionalStandMaterials" EntityType="Self.AdditionalStandMaterial" />
+    <EntitySet Name="ADMFAPayments" EntityType="Self.ADMFAPayment" />
+    <EntitySet Name="AppUserInformations" EntityType="Self.AppUserInformation" />
+    <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
+    <EntitySet Name="BudgetAndCurrentSales" EntityType="Self.BudgetAndCurrentSale" />
+    <EntitySet Name="CatalogInputForms" EntityType="Self.CatalogInputForm" />
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="CompanyContractPayments" EntityType="Self.CompanyContractPayment" />
+    <EntitySet Name="CompanyInformations" EntityType="Self.CompanyInformation" />
+    <EntitySet Name="CompanyNeeds" EntityType="Self.CompanyNeed" />
+    <EntitySet Name="CompanyProfiles" EntityType="Self.CompanyProfile" />
+    <EntitySet Name="Contracts" EntityType="Self.Contract" />
+    <EntitySet Name="ContractTypes" EntityType="Self.ContractType" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Currencies" EntityType="Self.Currency" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Fairs" EntityType="Self.Fair" />
+    <EntitySet Name="FreeAreas" EntityType="Self.FreeArea" />
+    <EntitySet Name="Guests" EntityType="Self.Guest" />
+    <EntitySet Name="HiddenDiscounts" EntityType="Self.HiddenDiscount" />
+    <EntitySet Name="Interviews" EntityType="Self.Interview" />
+    <EntitySet Name="Interviewees" EntityType="Self.Interviewee" />
+    <EntitySet Name="Offers" EntityType="Self.Offer" />
+    <EntitySet Name="ParticipantHandbooks" EntityType="Self.ParticipantHandbook" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProductGroups" EntityType="Self.ProductGroup" />
+    <EntitySet Name="Professions" EntityType="Self.Profession" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="SalesPersons" EntityType="Self.SalesPerson" />
+    <EntitySet Name="Saloons" EntityType="Self.Saloon" />
+    <EntitySet Name="Sectors" EntityType="Self.Sector" />
+    <EntitySet Name="Stands" EntityType="Self.Stand" />
+    <EntitySet Name="StandTypes" EntityType="Self.StandType" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TicketTypes" EntityType="Self.TicketType" />
+    <AssociationSet Name="FK_AdditionalStandMaterial_Company" Association="Self.FK_AdditionalStandMaterial_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="AdditionalStandMaterial" EntitySet="AdditionalStandMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdditionalStandMaterial_Fair" Association="Self.FK_AdditionalStandMaterial_Fair">
+      <End Role="Fair" EntitySet="Fairs" />
+      <End Role="AdditionalStandMaterial" EntitySet="AdditionalStandMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdditionalStandMaterial_Supplier" Association="Self.FK_AdditionalStandMaterial_Supplier">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="AdditionalStandMaterial" EntitySet="AdditionalStandMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ADMFAPayment_AdditionalStandMaterial" Association="Self.FK_ADMFAPayment_AdditionalStandMaterial">
+      <End Role="AdditionalStandMaterial" EntitySet="AdditionalStandMaterials" />
+      <End Role="ADMFAPayment" EntitySet="ADMFAPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ADMFAPayment_Company" Association="Self.FK_ADMFAPayment_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="ADMFAPayment" EntitySet="ADMFAPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ADMFAPayment_Fair" Association="Self.FK_ADMFAPayment_Fair">
+      <End Role="Fair" EntitySet="Fairs" />
+      <End Role="ADMFAPayment" EntitySet="ADMFAPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ADMFAPayment_FreeArea" Association="Self.FK_ADMFAPayment_FreeArea">
+      <End Role="FreeArea" EntitySet="FreeAreas" />
+      <End Role="ADMFAPayment" EntitySet="ADMFAPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AppUserInformation_AppUsers" Association="Self.FK_AppUserInformation_AppUsers">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="AppUserInformation" EntitySet="AppUserInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AppUserInformation_Role" Association="Self.FK_AppUserInformation_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="AppUserInformation" EntitySet="AppUserInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AppUsers_Role" Association="Self.FK_AppUsers_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="AppUsers" EntitySet="AppUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CatalogInputForm_Company" Association="Self.FK_CatalogInputForm_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CatalogInputForm" EntitySet="CatalogInputForms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CatalogInputForm_CompanyProfile" Association="Self.FK_CatalogInputForm_CompanyProfile">
+      <End Role="CompanyProfile" EntitySet="CompanyProfiles" />
+      <End Role="CatalogInputForm" EntitySet="CatalogInputForms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CatalogInputForm_ProductGroup" Association="Self.FK_CatalogInputForm_ProductGroup">
+      <End Role="ProductGroup" EntitySet="ProductGroups" />
+      <End Role="CatalogInputForm" EntitySet="CatalogInputForms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Country" Association="Self.FK_Company_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Company" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Fair" Association="Self.FK_Company_Fair">
+      <End Role="Fair" EntitySet="Fairs" />
+      <End Role="Company" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Sector" Association="Self.FK_Company_Sector">
+      <End Role="Sector" EntitySet="Sectors" />
+      <End Role="Company" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyContractPayment_Company" Association="Self.FK_CompanyContractPayment_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CompanyContractPayment" EntitySet="CompanyContractPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyInformation_Company" Association="Self.FK_CompanyInformation_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CompanyInformation" EntitySet="CompanyInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyNeed_Company" Association="Self.FK_CompanyNeed_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CompanyNeed" EntitySet="CompanyNeeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FreeArea_Company" Association="Self.FK_FreeArea_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="FreeArea" EntitySet="FreeAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HiddenDiscount_Company" Association="Self.FK_HiddenDiscount_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="HiddenDiscount" EntitySet="HiddenDiscounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interviewee_Company1" Association="Self.FK_Interviewee_Company1">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Interviewee" EntitySet="Interviewees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticipantHandbook_Company" Association="Self.FK_ParticipantHandbook_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="ParticipantHandbook" EntitySet="ParticipantHandbooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyContractPayment_Contract" Association="Self.FK_CompanyContractPayment_Contract">
+      <End Role="Contract" EntitySet="Contracts" />
+      <End Role="CompanyContractPayment" EntitySet="CompanyContractPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyContractPayment_Fair" Association="Self.FK_CompanyContractPayment_Fair">
+      <End Role="Fair" EntitySet="Fairs" />
+      <End Role="CompanyContractPayment" EntitySet="CompanyContractPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_CompanyInformation" Association="Self.FK_Contract_CompanyInformation">
+      <End Role="CompanyInformation" EntitySet="CompanyInformations" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_CompanyProfile" Association="Self.FK_Interview_CompanyProfile">
+      <End Role="CompanyProfile" EntitySet="CompanyProfiles" />
+      <End Role="Interview" EntitySet="Interviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_ContractType" Association="Self.FK_Contract_ContractType">
+      <End Role="ContractType" EntitySet="ContractTypes" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_Currency" Association="Self.FK_Contract_Currency">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_SalesPerson" Association="Self.FK_Contract_SalesPerson">
+      <End Role="SalesPerson" EntitySet="SalesPersons" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_Stand" Association="Self.FK_Contract_Stand">
+      <End Role="Stand" EntitySet="Stands" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_StandType" Association="Self.FK_Contract_StandType">
+      <End Role="StandType" EntitySet="StandTypes" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FreeArea_Contract" Association="Self.FK_FreeArea_Contract">
+      <End Role="Contract" EntitySet="Contracts" />
+      <End Role="FreeArea" EntitySet="FreeAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesPerson_Contract" Association="Self.FK_SalesPerson_Contract">
+      <End Role="Contract" EntitySet="Contracts" />
+      <End Role="SalesPerson" EntitySet="SalesPersons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HiddenDiscount_Currency" Association="Self.FK_HiddenDiscount_Currency">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="HiddenDiscount" EntitySet="HiddenDiscounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_Currency" Association="Self.FK_Offer_Currency">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="Offer" EntitySet="Offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesPerson_Currency" Association="Self.FK_SalesPerson_Currency">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="SalesPerson" EntitySet="SalesPersons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticipantHandbook_Employee" Association="Self.FK_ParticipantHandbook_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="ParticipantHandbook" EntitySet="ParticipantHandbooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fair_Saloon" Association="Self.FK_Fair_Saloon">
+      <End Role="Saloon" EntitySet="Saloons" />
+      <End Role="Fair" EntitySet="Fairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guest_Fair" Association="Self.FK_Guest_Fair">
+      <End Role="Fair" EntitySet="Fairs" />
+      <End Role="Guest" EntitySet="Guests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_Fair" Association="Self.FK_Interview_Fair">
+      <End Role="Fair" EntitySet="Fairs" />
+      <End Role="Interview" EntitySet="Interviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticipantHandbook_Fair" Association="Self.FK_ParticipantHandbook_Fair">
+      <End Role="Fair" EntitySet="Fairs" />
+      <End Role="ParticipantHandbook" EntitySet="ParticipantHandbooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesPerson_Fair" Association="Self.FK_SalesPerson_Fair">
+      <End Role="Fair" EntitySet="Fairs" />
+      <End Role="SalesPerson" EntitySet="SalesPersons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guest_Profession" Association="Self.FK_Guest_Profession">
+      <End Role="Profession" EntitySet="Professions" />
+      <End Role="Guest" EntitySet="Guests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guest_TicketType" Association="Self.FK_Guest_TicketType">
+      <End Role="TicketType" EntitySet="TicketTypes" />
+      <End Role="Guest" EntitySet="Guests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HiddenDiscount_Saloon" Association="Self.FK_HiddenDiscount_Saloon">
+      <End Role="Saloon" EntitySet="Saloons" />
+      <End Role="HiddenDiscount" EntitySet="HiddenDiscounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HiddenDiscount_Stand" Association="Self.FK_HiddenDiscount_Stand">
+      <End Role="Stand" EntitySet="Stands" />
+      <End Role="HiddenDiscount" EntitySet="HiddenDiscounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_Interviewee" Association="Self.FK_Interview_Interviewee">
+      <End Role="Interviewee" EntitySet="Interviewees" />
+      <End Role="Interview" EntitySet="Interviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_SalesPerson" Association="Self.FK_Interview_SalesPerson">
+      <End Role="SalesPerson" EntitySet="SalesPersons" />
+      <End Role="Interview" EntitySet="Interviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_Saloon" Association="Self.FK_Interview_Saloon">
+      <End Role="Saloon" EntitySet="Saloons" />
+      <End Role="Interview" EntitySet="Interviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interview_Sector" Association="Self.FK_Interview_Sector">
+      <End Role="Sector" EntitySet="Sectors" />
+      <End Role="Interview" EntitySet="Interviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_Saloon" Association="Self.FK_Offer_Saloon">
+      <End Role="Saloon" EntitySet="Saloons" />
+      <End Role="Offer" EntitySet="Offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_Stand" Association="Self.FK_Offer_Stand">
+      <End Role="Stand" EntitySet="Stands" />
+      <End Role="Offer" EntitySet="Offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductGroup_Product" Association="Self.FK_ProductGroup_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductGroup" EntitySet="ProductGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saloon_Sector" Association="Self.FK_Saloon_Sector">
+      <End Role="Sector" EntitySet="Sectors" />
+      <End Role="Saloon" EntitySet="Saloons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stand_Saloon" Association="Self.FK_Stand_Saloon">
+      <End Role="Saloon" EntitySet="Saloons" />
+      <End Role="Stand" EntitySet="Stands" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

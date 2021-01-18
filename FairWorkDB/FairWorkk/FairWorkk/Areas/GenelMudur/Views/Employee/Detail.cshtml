@@ -1,0 +1,26 @@
+﻿@model List<Employee>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/GenelMudur/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>Çalışan ID: <label style="color:darkred">@item.ID</label></h5></center><br />
+                <center><h5>Adı-Soyadı :<label style="color:darkred">@item.FullName</label></h5></center><br />
+                <center><h5>Unvanı :<label style="color:darkred">@item.Title</label></h5></center><br />
+                <center><h5>Email : <label style="color:darkred">@item.Email</label></h5></center><br />
+                <center><h5>Departman Adı: <label style="color:darkred">@item.DepartmanName</label></h5></center><br />
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "Employee", null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>
+

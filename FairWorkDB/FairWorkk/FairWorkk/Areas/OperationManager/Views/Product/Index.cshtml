@@ -1,0 +1,46 @@
+﻿@model List<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/OperationManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Ürün Listesi";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-gray-dark">
+            <div class="card-header">
+                <h3 class="card-title">Ürün Kısa Bilgileri</h3>
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th style="width:auto">Ürün Adı</th>
+                            <th style="width:auto">Ürün Fiyatı</th>
+                            <th style="width:auto">Özelliği</th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.ProductPrice</td>
+                                <td>@item.Features</td>
+                                <td>
+                                    @Html.ActionLink("Detay", "Detail", new { id = item.ID }, new { @class = "btn btn-success" })<br />
+                                    @Html.ActionLink("Ekle", "Add", "Product", null, new { @class = "btn btn-info" })<br />
+                                    @Html.ActionLink("Güncelle", "Update", new { id = item.ID }, new { @class = "btn btn-warning" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

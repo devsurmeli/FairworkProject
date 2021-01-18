@@ -1,0 +1,52 @@
+﻿@model List<Fair>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SalesPerson/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-warning">
+            <div class="card-header">
+                <h3 class="card-title">Düzenlenen Fuar Bilgileri</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: auto" >ID</th>
+                            <th style="width: auto" >Fuar Adi</th>
+                            <th style="width: auto" >Baslama Tarihi</th>
+                            <th style="width: auto" >Bitis Tarihi</th>
+                            <th style="width: auto" >Adresi</th>
+                            <th style="width: auto" >Salonu</th>
+                            <th style="width: auto" >Sektoru</th>
+                            <th style="width: auto" >Resim</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.FairName</td>
+                                <td>@item.StartDate.ToString("d")</td>
+                                <td>@item.FinishDate.ToString("d")</td>
+                                <td>@item.Address</td>
+                                <td>@item.Saloon.SalonName</td>
+                                <td>@item.Saloon.Sector.SectorAdı</td>
+                                <td><img src="@item.ImagePat" height="100" width="100" alt="fuar1"></td>
+                                <td>
+                                    @Html.ActionLink("Detay", "Detail", new { id = item.ID }, new { @class = "btn btn-warning" })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

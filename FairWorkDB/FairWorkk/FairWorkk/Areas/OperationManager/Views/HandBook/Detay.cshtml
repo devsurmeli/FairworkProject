@@ -1,0 +1,31 @@
+﻿@model List<ParticipantHandbook>
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Areas/OperationManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><label>ID: @item.ID</label></center>
+                <br />
+                <center><label>Gönderi Tarihi: @item.ShippingDate.ToString("d")</label></center>
+                <br />
+                <center><label>Kim Tarafından Gönderildi: @item.EmployeeId @item.Employee.FullName (@item.Employee.Title)</label></center>
+                <br />
+                <center><label>Teslim Alınan Tarihi: @item.DeliveryDate.ToString("d")</label></center>
+                <br />
+                <center><label>Firma Bilgileri: @item.Company.ID<br />@item.Company.CompanyName<br />@item.Company.CompanyOfficial<br />@item.Company.Phone<br />@item.Company.Email</label></center>
+                <br />
+                <center><label>Katılacağı Fuar Bilgileri: @item.Fair.ID<br />
+                    @item.Fair.FairName <br />
+                    @item.Fair.Address <br />
+                    @item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d") <br />
+                    </label></center>
+
+            }
+        </div>
+    </div>
+</div>

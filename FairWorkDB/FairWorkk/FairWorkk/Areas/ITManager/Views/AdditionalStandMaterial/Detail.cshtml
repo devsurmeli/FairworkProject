@@ -1,0 +1,60 @@
+﻿@model List<AdditionalStandMaterial>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Detay Syafası";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>ID: <label style="color:darkred">@item.ID</label></h5></center><br />
+                <center>
+                    <h5>
+                        Firma ID: <label style="color:darkred"> @item.Company.ID</label><br />
+                        Firma Adı: <label style="color:darkred">@item.Company.CompanyName</label><br />
+                        Firma Yetkilisi: <label style="color:darkred">@item.Company.CompanyOfficial</label><br />
+                        Firma Unvanı: <label style="color:darkred">@item.Company.Title</label><br />
+                        Firma Telefonu: <label style="color:darkred">@item.Company.Phone</label><br />
+                        Firma Emaili: <label style="color:darkred">@item.Company.Email</label><br />
+                        Firma Fax: <label style="color:darkred">@item.Company.Fax</label><br />
+                        Firma Addresi: <label style="color:darkred">@item.Company.Address</label><br />
+                        Firma Ülkesi: <label style="color:darkred">@item.Company.Country.CountryName</label><br />
+                        Firma Sectorü: <label style="color:darkred">@item.Company.Sector.SectorAdı</label><br />
+                        Firmanın Katıldığı Fuar Sayısı: <label style="color:darkred">@item.Company.FairAttendance</label><br />
+                    </h5>
+                </center><br />
+                <center>
+                    <h5>
+                        Fuar ID: <label style="color:darkred">@item.Fair.ID</label><br />
+                        Fuar Adı: <label style="color:darkred">@item.Fair.FairName</label><br />
+                        Fuar Başlama-Bitiş Tarihi: <label style="color:darkred">@item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d")</label><br />
+                        Fuar Adresi: <label style="color:darkred">@item.Fair.Address</label><br />
+                    </h5>
+                </center><br />
+                <center><h5>Sipariş Edilen Stand Adı :<label style="color:darkred">@item.StandName</label></h5></center><br />
+                <center><h5>Sipariş Edilen Stand Codu :<label style="color:darkred">@item.StandCode</label></h5></center><br />
+                <center><h5>Sipariş Edilen Stand Fiyati: <label style="color:darkred">@item.StandPrice</label></h5></center><br />
+                <center><h5>Sipariş Edilen Stand Toplam Fiyati: <label style="color:darkred">@item.TotalPrice</label></h5></center><br />
+                <center><h5>Sipariş Edilen Stand Özellikleri: <label style="color:darkred">@item.StandFeatures</label></h5></center><br />
+                <center>
+                    <h5>
+                        Tedarikçi ID: <label style="color:darkred">@item.SupplierId</label><br />
+                        Tedarikçi Firma Adı: <label style="color:darkred">@item.Supplier.Name @item.Supplier.Surname</label><br />
+                        Tedarikçi Adresi: <label style="color:darkred">@item.Supplier.Address</label><br />
+                        Tedarikçi Telefonu: <label style="color:darkred">@item.Supplier.Phone</label><br />
+                        Tedarikçi Email: <label style="color:darkred">@item.Supplier.Email</label><br />
+                    </h5>
+                </center><br />
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "AdditionalStandMaterial",null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>
+

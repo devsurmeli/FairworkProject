@@ -1,0 +1,46 @@
+﻿@model List<Sector>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Sektor Listesi";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-gray-dark">
+            <div class="card-header">
+                <h3 class="card-title">Sektor Bilgileri</h3>
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th style="width:auto">Sector Adı</th>
+                            <th style="width:auto"></th>
+                            <th style="width:auto"></th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.SectorAdı</td>
+                                <td>
+                                    @Html.ActionLink("Ekle", "Add", "Sector", null, new { @class = "btn btn-info" })
+                                </td>
+                                <td> @Html.ActionLink("Güncelle", "Update", new { id = item.ID }, new { @class = "btn btn-warning" })</td>
+                                <td>
+                                    @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

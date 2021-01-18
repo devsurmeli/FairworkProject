@@ -1,0 +1,67 @@
+﻿@model List<Contract>
+@{
+    ViewBag.Title = "Index";
+    TempData["Title"] = "Sözleşme Bilgilerinin Dair Herşey";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h3 class="card-title">Sözleşme Bilgileri</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width:auto">Sözleşme ID</th>
+                            <th style="width:auto">Katılımcı Firma</th>
+                            <th style="width:auto">Sözleşme Tipi</th>
+                            <th style="width:auto">Stand Alanı</th>
+                            <th style="width:auto">M2 Birim Fiyatı</th>
+                            <th style="width:auto">Döviz Cinsi</th>
+                            <th style="width:auto">Döviz Kuru</th>
+                            <th style="width:auto">İndirim Oranı</th>
+                            <th style="width:auto">Vade Sayısı</th>
+                            <th style="width:auto">Ödeme Planı</th>
+                            <th style="width:auto">Toplam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>
+                                    ID = @item.CompanyInformation.CompanyId<br />
+                                    Firma Adı = @item.CompanyInformation.Company.CompanyName<br />
+                                    Fuar ID = @item.CompanyInformation.Company.FairId<br />
+                                    Fuar Adı = @item.CompanyInformation.Company.Fair.FairName
+                                </td>
+                                <td>@item.ContractType.TypeName</td>
+                                <td>@item.Stand.Area</td>
+                                <td>@item.SquarePrice</td>
+                                <td>@item.Currency.CurrencyName</td>
+                                <td>@item.EcxhangeRate</td>
+                                <td>%@item.DiscountRate</td>
+                                <td>@item.MaturityNumber</td>
+                                <td>@item.PaymentPlan</td>
+                                <td>@item.TotalPrice</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+            <footer class="form-group">
+                <center>
+                    <h5> Toplam Sözleşme Adeti = <span style="color:red">@Model.Count()</span></h5>
+                    <h5> Bütün Sözleşme Toplamı = <span style="color:red">@Model.Sum(x => x.TotalPrice)$</span></h5>
+                </center>
+            </footer>
+        </div>
+    </div>
+</div>
+

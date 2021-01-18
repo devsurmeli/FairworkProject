@@ -1,0 +1,32 @@
+﻿@model List<SalesPerson>
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Areas/ReferencesManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-12">
+            <center>
+                <h5>Sıra ID = <span style="color:red">@item.ID</span></h5><br />
+                <h5 style="color:cornflowerblue">Fuar Bilgileri</h5>
+                <label>
+                    Fuar ID = <span style="color:red">@item.FairId</span><br />
+                    Fuar Adı = <span style="color:red">@item.Fair.FairName</span><br />
+                    Fuar Başlama ve Bitiş Tarihi = <span style="color:red">@item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d")</span><br />
+                    Fuar Adresi = <span style="color:red">@item.Fair.Address</span><br />
+                </label><br />
+                <h5 style="color:cornflowerblue">Adı-Soyadı = <span style="color:red">@item.FullName</span></h5>
+                <h5 style="color:cornflowerblue">Telefonu = <span style="color:red">@item.Phone</span></h5>
+                <h5 style="color:cornflowerblue">Email Adresi = <span style="color:red">@item.Email</span></h5>
+                <h5 style="color:cornflowerblue">Sözleşme ID = <span style="color:red">@item.ContractId</span></h5>
+                <h5 style="color:cornflowerblue">Komisyon Tutari = <span style="color:red">@item.CommisionPrice</span></h5>
+                <h5 style="color:cornflowerblue">Döviz Cinsi = <span style="color:red">@item.Currency.CurrencyName</span></h5>
+                @Html.ActionLink("Geri Dön", "Index", "Stand", new { @class = "btn btn-lg btn-dark" })
+                <br />
+            </center>
+        </div>
+    }
+</div>
+

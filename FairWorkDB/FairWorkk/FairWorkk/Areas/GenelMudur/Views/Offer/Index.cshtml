@@ -1,0 +1,55 @@
+﻿@model List<Offer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/GenelMudur/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Firmayla Yapılmış Olan Teklif Bilgileri";
+}
+
+<div class="card card-dark">
+    <div class="card-header">
+        <h3 class="card-title">Teklif Bilgisi</h3>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:auto;height:auto">Teklif ID</th>
+                    <th style="width:auto;height:auto">Teklif Tarihi</th>
+                    <th style="width:auto;height:auto">Salon Adı</th>
+                    <th style="width:auto;height:auto">Stand Kodu</th>
+                    <th style="width:auto;height:auto">Teklif Verilen M2</th>
+                    <th style="width:auto;height:auto">M2 Birim Fiyati</th>
+                    <th style="width:auto;height:auto">Döviz Cinsi</th>
+                    <th style="width:auto;height:auto">Döviz Kuru</th>
+                    <th style="width:auto;height:auto">Vade Sayisi</th>
+                    <th style="width:auto;height:auto">Ödeme Planı</th>
+                    <th style="width:auto;height:auto">Teklifin Son Geçerlilik Tarihi</th>
+                    <th style="width:auto;height:auto"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@i.ID</td>
+                        <td>@i.OfferDate.ToString("d")</td>
+                        <td>@i.Saloon.SalonName</td>
+                        <td>@i.Stand.Code</td>
+                        <td>@i.OfferSquare</td>
+                        <td>@i.SquarePrice</td>
+                        <td>@i.Currency.CurrencyName</td>
+                        <td>@i.ExchangeRate</td>
+                        <td>@i.MaturityNumber</td>
+                        <td>@i.PaymentPlan</td>
+                        <td>@i.OfferDeadline.ToString("d")</td>
+                        <td>
+                            @Html.ActionLink("Detay", "Detay", new { id = i.ID }, new { @class = "btn btn-dark" })
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

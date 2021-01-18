@@ -1,0 +1,61 @@
+﻿@model List<CompanyContractPayment>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] ="Detay Sayfası";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-12">
+            <center>
+                <h5>Sıra ID = <span style="color:red">@item.ID</span></h5><br />
+                <h5 style="color:cornflowerblue">Sözleşme Bilgileri</h5>
+                <label>
+                    Sözleşme ID = <span style="color:red">@item.ContractId</span><br />
+                    Sözleşme Tarihi = <span style="color:red">@item.Contract.ContractDate.ToString("d")</span><br />
+                    Sözleşme Tipi = <span style="color:red">@item.Contract.ContractType.TypeName</span><br />
+                    Stand Tipi = <span style="color:red">@item.Contract.StandType.TypeName</span><br />
+                    Stand Alanı = <span style="color:red">@item.Contract.Stand.Area</span><br />
+                    M2 Birim Fiyat = <span style="color:red">@item.Contract.SquarePrice</span><br />
+                    Döviz Cinsi = <span style="color:red">@item.Contract.Currency.CurrencyName</span><br />
+                    Döviz Kuru = <span style="color:red">@item.Contract.EcxhangeRate</span><br />
+                    İndirim Oranı = <span style="color:red">@item.Contract.DiscountRate</span><br />
+                    Vade Sayısı = <span style="color:red">@item.Contract.MaturityNumber</span><br />
+                    Ödeme Planı = <span style="color:red">@item.Contract.PaymentPlan</span><br />
+                    Toplam Fiyatı = <span style="color:red">@item.Contract.TotalPrice</span><br />
+                    Sözleşme Son Gecerlilik Tarihi = <span style="color:red">@item.Contract.ContractDeadline.ToString("d")</span><br />
+                    İmzalı mı? = <span style="color:red">@item.Contract.ContractSigned</span><br />
+                </label>
+                <h5 style="color:cornflowerblue">Katılımcı Firma Bilgileri</h5>
+                <label>
+                    Firma ID = <span style="color:red">@item.CompanyId</span><br />
+                    Firma Adı = <span style="color:red">@item.Company.CompanyName</span><br />
+                    Firma Yetkilisi = <span style="color:red">@item.Company.CompanyOfficial</span><br />
+                    Firma Unvani = <span style="color:red">@item.Company.Title</span><br />
+                    Firma Telefonu = <span style="color:red">@item.Company.Phone</span><br />
+                    Firma Dahili = <span style="color:red">@item.Company.Intercom</span><br />
+                    Firma Email Adresi = <span style="color:red">@item.Company.Email</span><br />
+                    Firma Fax = <span style="color:red">@item.Company.Fax</span><br />
+                    Firma Adresi = <span style="color:red">@item.Company.Address</span><br />
+                </label>
+                <h5 style="color:cornflowerblue">Fuar Bilgileri</h5>
+                <label>
+                    Fuar ID = <span style="color:red">@item.FairId</span><br />
+                    Fuar Adı = <span style="color:red">@item.Fair.FairName</span><br />
+                    Fuar Başlama ve Bitiş Tarihi = <span style="color:red">@item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d")</span><br />
+                    Fuar Adresi = <span style="color:red">@item.Fair.Address</span><br />
+                </label><br />
+                <h5 style="color:cornflowerblue">Toplam = <span style="color:red">@item.TotalPrice$</span></h5>
+                <h5 style="color:cornflowerblue">Ödenen Borç = <span style="color:red">@item.AmountPaid</span></h5>
+                <h5 style="color:cornflowerblue">Kalan Borç = <span style="color:red">@item.AmountNotPaid</span></h5>
+                <h5 style="color:cornflowerblue">Toplamın Dolar Cinsi = <span style="color:red">@item.DollarPrice$</span></h5>
+                <h5 style="color:cornflowerblue">Toplamın Euro Cinsi = <span style="color:red">@item.EuroPrice€</span></h5>
+                <h5 style="color:cornflowerblue">Toplam Türk Lirası Cinsi= <span style="color:red">@item.TurkıshLira₺</span></h5><br />
+                @Html.ActionLink("Geri Dön", "Index", "CompanyPayment", new { @class = "btn btn-lg btn-dark" })
+            </center>
+        </div>
+    }
+</div>
+

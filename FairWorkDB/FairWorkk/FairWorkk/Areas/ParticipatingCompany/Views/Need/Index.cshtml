@@ -1,0 +1,53 @@
+﻿@model List<CompanyNeed>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ParticipatingCompany/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Firmaların İhtiyacı Bilgilerinin Listesi";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h3 class="card-title">Firma İhtiyaç Bilgileri</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: auto">ID</th>
+                            <th style="width: auto">Katılımcı Firma</th>
+                            <th style="width: auto">İhtiyaç Duyduğu Davetiye Sayısı</th>
+                            <th style="width: auto">İhtiyaç Duyduğu Poster Sayısı</th>
+                            <th style="width: auto">İhtiyaç Duyduğu Personel Girş Kart Sayısı</th>
+                            <th style="width: auto">İhtiyaç Duyduğu Personel Otopark Giriş Kart Sayısı</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>
+                                    @item.CompanyId
+                                    @item.Company.CompanyName
+                                </td>
+                                <td>@item.InvitationNumber</td>
+                                <td>@item.PosterNumber</td>
+                                <td>@item.PersonelEntryCardNumber</td>
+                                <td>@item.StaffParkingEntryCardNumber</td>
+                                <td>
+                                    @Html.ActionLink("Ekle", "Add", "Need", null, new { @class = "btn btn-dark" })<br />
+                                    @Html.ActionLink("Güncelle", "Update", new { id = item.ID }, new { @class = "btn btn-secondary" })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

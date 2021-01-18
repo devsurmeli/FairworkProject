@@ -1,0 +1,49 @@
+﻿@model List<Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/GenelMudur/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Çalişanlar";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-gray-dark">
+            <div class="card-header">
+                <h3 class="card-title">Çalişan Bilgileri</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: auto">ID</th>
+                            <th style="width: auto">Adi-Soyadı</th>
+                            <th style="width: auto">Unvani</th>
+                            <th style="width: auto">Telefon</th>
+                            <th style="width: auto">Email</th>
+                            <th style="width: auto">Departmanı</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.FullName</td>
+                                <td>@item.Title</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Email</td>
+                                <td>@item.DepartmanName</td>
+                                <td>
+                                    @Html.ActionLink("Detay", "Detail", new { id = item.ID }, new { @class = "btn btn-secondary" })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,316 @@
+﻿@model ViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ReferencesManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Bütçe planlanması yapılabilmesi için önce GELİR'lerin toplamını alıp GİDER'lerin içindeki değerlerden çıkarttıktan sonra güncel kazanç çıkıyor.";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Gelir</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: auto">Sıra No</th>
+                                    <th style="width: auto">Gelir Adı</th>
+                                    <th style="width: auto">Toplam Gelir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>Sözleşmeden Gelen Toplam Gelir Tutarı</td>
+                                    <td>@Model.ContractModel.Sum(x => x.TotalPrice)</td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>İlave Stand Malzemesi Satış Toplam Tutarı</td>
+                                    <td>@Model.ASMModel.Sum(x => x.TotalPrice)</td>
+                                </tr>
+                                <tr>
+                                    <td>3.</td>
+                                    <td>Diğer Hizmetlerden Gelen Satış Toplamı</td>
+                                    <td>@Model.FreeAreaModel.Sum(x => x.TotalPrice)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-danger">
+                    <div class="card-header">
+                        <h3 class="card-title">Gider</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: auto">Sıra No</th>
+                                    <th style="width: auto">Gider Adı</th>
+                                    <th style="width: auto">Toplam Gider</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>%10 Komisyon Tutarı</td>
+                                    <td>@Model.SalesPersonModel.Sum(x => x.CommisionPrice)</td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>%18 KDV Tutarı</td>
+                                    <td>Hesapla</td>
+                                </tr>
+                                <tr>
+                                    <td>3.</td>
+                                    <td>%20 KUrumlar Vergisi</td>
+                                    <td>Hesapla</td>
+                                </tr>
+                                <tr>
+                                    <td>4.</td>
+                                    <td>%10 Yedek Akçe Tutarı</td>
+                                    <td>Hesapla</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <center>
+                    <div class="card card-success">
+                        <div class="card-header">
+
+                            <h3 class="card-title">Toplama Çıkarma</h3>
+
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <tbody>
+
+                                    <tr>
+
+                                        <th>HESAPLAMA</th>
+                                        
+
+                                    </tr>
+                                    <tr>
+                                        <th>Sayı 1:</th>
+                                        <td><input id="sayi1" type="text" /></td>
+
+                                        <th>Sayı 2:</th>
+                                        <td><input id="sayi2" type="text" /></td>
+
+                                        <th>Sayı 3:</th>
+                                        <td><input id="sayi3" type="text" /></td>
+
+                                        <th>Sayı 4:</th>
+                                        <td><input id="sayi4" type="text" /></td>
+                                    </tr>
+                                    <tr>
+
+                                        <th>Sonuç</th>
+                                        <td><input id="sonuc" type="text"  /></td>
+                                        
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer>
+                            <center>
+                                <input type="button" onclick="topla();" value="Topla" />
+                                <input type="button" onclick="cikar();" value="Çıkar" />
+                                <input type="button" onclick="temizle();" value="Temizle" /><br />
+                                <span style="color:red"><strong>Not : Bütün kutucuklara değer yazınız ve Çıkarma İşlemi ilk Sayı1 ile sayı2 arasında gerçekleşiyor.</strong></span>
+                            </center><br />
+                        </footer>
+                    </div>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <center>
+                    <div class="card card-indigo">
+                        <div class="card-header">
+
+                            <h3 class="card-title">%18 KDV</h3>
+
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <tbody>
+
+                                    <tr>
+
+                                        <th>Girilen Değerin %18 HESAPLAMA</th>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Toplam Tutar :</th>
+                                        <td><input id="sayi" type="text" /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Sonuc</th>
+                                        <td><input id="yuzde" type="text" /></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer>
+                            <center>
+                                <input type="button" onclick="kdv();" value="Hesapla" />
+                                <input type="button" onclick="temizle1();" value="Temizle" /><br />
+                            </center><br />
+                        </footer>
+                    </div>
+                </center>
+            </div>
+            <div class="col-lg-4">
+                <center>
+                    <div class="card card-secondary">
+                        <div class="card-header">
+
+                            <h3 class="card-title">Kurum Vergisi Hesaplama</h3>
+
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <tbody>
+
+                                    <tr>
+
+                                        <th>%20 Kurum Vergisi</th>
+
+
+                                    </tr>
+                                    <tr>
+                                        <th>Toplam Tutar:</th>
+                                        <td><input id="sayi7" type="text" /></td>
+                                    </tr>
+                                    <tr>
+
+                                        <th>Sonuç</th>
+                                        <td><input id="20yuzde" type="text" /></td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer>
+                            <center>
+                                <input type="button" onclick="kurum();" value="Hesapla" />
+                                <input type="button" onclick="temizle2();" value="Temizle" /><br />
+                            </center><br />
+                        </footer>
+                    </div>
+                </center>
+            </div>
+
+            <div class="col-lg-4">
+                <center>
+                    <div class="card card-maroon">
+                        <div class="card-header">
+
+                            <h3 class="card-title">Yedek Akçe Hesaplama</h3>
+
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <tbody>
+
+                                    <tr>
+
+                                        <th>%10 Yedek Akçe </th>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Toplam Tutar :</th>
+                                        <td><input id="sayi8" type="text" /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Sonuc</th>
+                                        <td><input id="10yuzde" type="text" /></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer>
+                            <center>
+                                <input type="button" onclick="yedek();" value="Topla" />
+                                <input type="button" onclick="temizle3();" value="Temizle" /><br />
+                            </center><br />
+                        </footer>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--Burada gordugunuz herseyı kendı arastırmam ve kendım yazdım hocam saygılarımla-->
+<script type="text/javascript">
+    function topla() {
+        s1 = parseInt(document.getElementById('sayi1').value);
+        s2 = parseInt(document.getElementById('sayi2').value);
+        s3 = parseInt(document.getElementById('sayi3').value);
+        s4 = parseInt(document.getElementById('sayi4').value);
+        document.getElementById('sonuc').value = (((s1 + s2 )+ s3) + s4);
+    }
+    function cikar() {
+        s1 = parseInt(document.getElementById('sayi1').value);
+        s2 = parseInt(document.getElementById('sayi2').value);
+        s3 = parseInt(document.getElementById('sayi3').value);
+        s4 = parseInt(document.getElementById('sayi4').value);
+        document.getElementById('sonuc').value = (((s1 - s2) - s3) - s4);
+    }
+    function kdv() {
+        s1 = parseInt(document.getElementById('sayi').value);
+        document.getElementById('yuzde').value = (s1 * 18) / 100;
+    }
+    function kurum() {
+        s1 = parseInt(document.getElementById('sayi7').value);
+        document.getElementById('20yuzde').value = (s1 * 20) / 100;
+    }
+    function yedek() {
+        s1 = parseInt(document.getElementById('sayi8').value);
+        document.getElementById('10yuzde').value = (s1 * 10) / 100;
+    }
+    function temizle() {
+        document.getElementById('sayi1').value = "";
+        document.getElementById('sayi2').value = "";
+        document.getElementById('sayi3').value = "";
+        document.getElementById('sayi4').value = "";
+        document.getElementById('sonuc').value = "";
+    }
+    function temizle1() {
+        document.getElementById('sayi').value = "";
+        document.getElementById('yuzde').value = "";
+    }
+    function temizle2() {
+        document.getElementById('sayi7').value = "";
+        document.getElementById('20yuzde').value = "";
+    }
+    function temizle3() {
+        document.getElementById('sayi8').value = "";
+        document.getElementById('10yuzde').value = "";
+    }
+</script>
+

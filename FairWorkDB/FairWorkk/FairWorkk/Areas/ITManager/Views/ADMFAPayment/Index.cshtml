@@ -1,0 +1,81 @@
+﻿@model List<ADMFAPayment>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Ödeme Bilgilerinin Listesi";
+
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-gray-dark">
+            <div class="card-header">
+                <h3 class="card-title">İlave Stand Malzemesi ve Diger Hizmetler Ödeme Bilgileri</h3>
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th style="width:auto">Firma Bilgileri</th>
+                            <th style="width:auto">Fuar Bilgileri</th>
+                            <th style="width:auto">Boş Alan</th>
+                            <th style="width:auto">Boş Alan Bilgileri</th>
+                            <th style="width:auto">Boş Alan Toplamı</th>
+                            <th style="width:auto">İlave Stand Bilgileri</th>
+                            <th style="width:auto">İlave Stand Toplamı</th>
+                            <th style="width:auto">Ödenen Tutar</th>
+                            <th style="width:auto">Kalan Tutar</th>
+                            <th style="width:auto">Toplam Fiyat</th>
+                            <th style="width:auto">Dolar Fiyatı</th>
+                            <th style="width:auto">Euro Fiyatı</th>
+                            <th style="width:auto">TL Fiyatı</th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>
+                                    Firma ID: @item.Company.ID<br />
+                                    Firma Adı: @item.Company.CompanyName<br />
+                                    Firma Yetkilisi : @item.Company.CompanyOfficial<br />
+                                    Telefonu: @item.Company.Phone<br />
+                                    Email: @item.Company.Email<br />
+                                    Adresi: @item.Company.Address<br />
+                                </td>
+                                <td>
+                                    Fuar ID: @item.Fair.ID<br />
+                                    Fuar Adı: @item.Fair.FairName<br />
+                                    Fuar Tarihi: @item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d")
+                                    Fuar Adresi: @item.Fair.Address
+                                </td>
+                                <td>@item.FreeArea</td>
+                                <td>@item.FreeAreaId</td>
+                                <td>@item.FreeAreaTotalPrice</td>
+                                <td>@item.AdditionalStandId</td>
+                                <td>@item.AddiitionalStandTotalPrice</td>
+                                <td>@item.AmountPaid</td>
+                                <td>@item.AmountNotPaid</td>
+                                <td>@item.TotalPrice</td>
+                                <td>@item.DollarPrice</td>
+                                <td>@item.EuroPrice</td>
+                                <td>@item.TurkıshLira</td>
+                                <td>
+                                    @Html.ActionLink("Detay", "Detail", new { id = item.ID }, new { @class = "btn btn-success" })<br />
+                                    @Html.ActionLink("Ekle", "Add", "ADMFAPayment", null, new { @class = "btn btn-info" })<br />
+                                    @Html.ActionLink("Güncelle", "Update", new { id = item.ID }, new { @class = "btn btn-warning" })<br />
+                                    @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

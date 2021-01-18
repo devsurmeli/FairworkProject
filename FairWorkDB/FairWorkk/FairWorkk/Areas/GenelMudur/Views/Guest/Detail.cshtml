@@ -1,0 +1,29 @@
+﻿@model List<Guest>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/GenelMudur/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Ziyaretçi Detay";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-12">
+            <center>
+                <h6>Ziyaretçi ID = <label style="color:green">@item.ID</label></h6>
+                <h6>Adi-Soyadı = <label style="color:green">@item.Name @item.Surname</label></h6>
+                <h6>Çalıştığı Firma Adı = <label style="color:green">@item.CompanyName</label></h6>
+                <h6>Adresi = <label style="color:green">@item.Adress</label></h6>
+                <h6>Telefon Numarası = <label style="color:green">@item.Phone</label></h6>
+                <h6>Email Adresi = <label style="color:green">@item.Email</label></h6>
+                <h6>Mesleği = <label style="color:green">@item.Profession.ProfessionName</label></h6>
+                <h6>Katıldığı Fuar = <label style="color:green">@item.Fair.FairName</label></h6>
+                <h6>Bilet Tipi = <label style="color:green">@item.TicketType.TypeName</label></h6>
+
+                @Html.ActionLink("Geri Dön", "Index", "Guest", null, new { @class = "btn btn-success" })
+            </center>
+        </div>
+    }
+</div>
+
+

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Contract>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/SalesPerson/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" id="printdiv">
+    <div class="col-lg-12">
+        <div class="card">
+            @foreach (var item in Model)
+            {
+                <center><label>Sözleşme ID: @item.ID</label></center>
+                <br />
+                <center><label>Sözleşme Tarihi: @item.ContractDate.ToString("d")</label></center>
+                <br />
+                <center><label>Görüşmeyi Yapan Satı Personeli<br />Sicil No:@item.SalesPerson.ID<br />Adı-Soyadı:@item.SalesPerson.FullName</label></center>
+                <br />
+                <center><label>Firma Bilgileri:@item.CompanyInformation.ID<br />Firma Adı:@item.CompanyInformation.Company.CompanyName<br />Firma Adresi:@item.CompanyInformation.Adress<br />Telefonu:@item.CompanyInformation.Phone<br />Vergi Dairesi: @item.CompanyInformation.TaxAuthority<br />Vergi Numarası: @item.CompanyInformation.TaxNumber<br />Fuar Yetkilisi:@item.CompanyInformation.FairOfficial</label></center>
+                <br />
+                <center><label>Sözleşme Tipi:@item.ContractType.TypeName</label></center>
+                <br />
+                <center><label>Stand Tipi:@item.StandType.TypeName</label></center>
+                <br />
+                <center><label>Satin Alınan M2<br />SalonNo:@item.Stand.SaloonId<br />Stand Kodu:@item.Stand.Code<br />Eni: @item.Stand.Width<br />Boyu: @item.Stand.Height</label></center>
+                <br />
+                <center><label>M2 Birim Fiyati:@item.SquarePrice</label></center>
+                <br />
+                <center><label>Döviz Cinsi: @item.Currency.CurrencyName</label></center>
+                <br />
+                <center><label>Döviz Kuru: @item.EcxhangeRate</label></center>
+                <br />
+                <center><label>İndirim Orani:%@item.DiscountRate</label></center>
+                <br />
+                <center><label>Vade Sayisi:@item.MaturityNumber</label></center>
+                <br />
+                <center><label>Ödeme Plani:@item.PaymentPlan</label></center>
+                <br />
+                <center><label>Toplam Fiyat:@item.TotalPrice</label></center>
+                <br />
+                <center><label>Sözleşme Son Geçerlilik Tarihi : @item.ContractDeadline.ToString("d")</label></center>
+                <br />
+                <center><label>Sözleşme İmzalı mı? : @item.ContractSigned</label></center>
+                <br />
+                @Html.ActionLink("Yazdır", "Detail", new { id = item.ID }, new { @class = "btn btn-warning", onclick = "print('#printdiv')" })<br />
+                @Html.ActionLink("Geri Dön", "Index", "Contract", null, new { @class = "btn btn-secondary" })<br />
+            }
+        </div>
+    </div>
+</div>
+
+
+<!--todo:Hocamıza acıklamasını yapmayı unutma bunu nasıl yaptıgınla ılgılı-->
+
+<script>
+    $(document).ready(function () {
+        document.getElementById("printdiv").style.visibility = "hidden";
+    });
+
+    function print(div) {
+        document.getElementById("printdiv").style.visibility = "visible";
+        Popup($(div).html());
+    }
+
+    function Popup(data) {
+        var printwindow = window.open('', 'printdiv');
+        printwindow.document.write('<html><head><title></title>');
+        printwindow.document.write('</head><body>');
+        printwindow.document.write(data);
+        printwindow.document.write('</body></html>');
+        printwindow.document.close();
+        document.getElementById("printdiv").style.visibility = "hidden";
+        printwindow.focus();
+        printwindow.print();
+        printwindow.close();
+        document.getElementById("printdiv").style.visibility = "visible";
+    }
+
+</script>
+
+

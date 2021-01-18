@@ -1,0 +1,11 @@
+Merhaba Hocam 
+
+Hocam oncelikle Login işlemini yaptım ama arealarına gore acılmıyor tek bır yer acılıyor belırttıgım gıse personelı gırıs 
+yapabılıyor cok arastırdım baktım ama yapamadım bilginiz olsun hocam.
+
+Bu projede yapamadığım cidden cok uğraştığım multi selecti yapamadım araştırmalarım sonucu elde ettiğim code first 
+kullansaydım yapabilirdim db first yaptığım için olmadı yapamadım ınanın cok ugrastım 2 hafta mı aldı yıne yapamadım ve 
+cidden gruptan herkesten yardım ıstedım ama bılen bır hıcran hocaydı o da benı takmadı hocam kısacası o yuzden yapamadım.
+Bu projede yaparak cok ve arastırarak cok sey ogrendım hocam birde cogu seyı gerceklestım kagıtta yazan cogu seyı yaptım hocam 
+simdiden verdıgınız öğrettiğiniz herşey için size çok tesekkur edıyorum.
+

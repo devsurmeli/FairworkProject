@@ -1,0 +1,56 @@
+﻿@model CompanyInformation
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Firma Kısa Bilgilerini Güncelleme";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+
+                    @Html.HiddenFor(x=>x.ID)
+
+                    <div class="form-group">
+                        <label>Firma Seç</label>
+                        @Html.DropDownList("CompanyId", (SelectList)ViewBag.Company, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Adresi</label>
+                        @Html.TextBoxFor(x => x.Adress, new { @class = "form-control", placeholder = "Firma adresini yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefonu</label>
+                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", placeholder = "Firma telefonu yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Vergi Dairesi</label>
+                        @Html.TextBoxFor(x => x.TaxAuthority, new { @class = "form-control", placeholder = "Firma vergi dairesini yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Vergi Numarası</label>
+                        @Html.TextBoxFor(x => x.TaxNumber, new { @class = "form-control", placeholder = "Firma vergi numarasını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Adresi</label>
+                        @Html.TextBoxFor(x => x.FairOfficial, new { @class = "form-control", placeholder = "Firma fuar yetkilisini yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön", "Index", "CompanyInformation", null, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,38 @@
+﻿@model List<Interview>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Görüşme Detay";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-12">
+            <center>
+                <h5>Görüşme Bilgisinin ID'sı</h5>
+                <label style="color:seagreen">@item.ID</label>
+                <h5>Görüşmeyi Yapan Satış Personeli</h5>
+                <label style="color:darkred">@item.SalesPerson.FullName</label>
+                <h5>Görüşme Tarihi</h5>
+                <label style="color:darkred">@item.OfferDate.ToString("d")</label>
+                <h5>Görüşülen Kişi</h5>
+                <label style="color:darkred">@item.Interviewee.FullName <br /> @item.Interviewee.Title<br />@item.Interviewee.Phone<br />@item.Interviewee.Email</label>
+                <h5>Firmanın Çalıştığı Sektör</h5>
+                <label style="color:darkred">@item.Sector.SectorAdı</label>
+                <h5>Firma Profili</h5>
+                <label style="color:darkred">@item.CompanyProfile.ProfileName</label>
+                <h5>Firma İlgilendiği Fuar</h5>
+                <label style="color:darkred">@item.Fair.FairName<br />@item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d")<br />@item.Fair.Address</label>
+                <h5>Firmanın İlgilendiği Salon</h5>
+                <label style="color:darkred">@item.Saloon.SalonName</label>
+                <h5>Görüşme Notları</h5>
+                <label style="color:darkred">@item.Notes</label>
+                <h5>
+                    @Html.ActionLink("Geri Dön", "Index", "Interview", null, new { @class = "btn btn-secondary" })
+                </h5>
+            </center>
+        </div>
+    }
+</div>
+

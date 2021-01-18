@@ -1,0 +1,78 @@
+﻿@model Offer
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Teklif Güncelleme Sayfası";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <center><h2>Teklif Bilgileri Güncelleme</h2></center>
+            </div>
+            <br />
+            <div class="panel-body col-lg-12">
+                @using (Html.BeginForm("Update", "Offer", FormMethod.Post))
+                {
+                    <div class="form-group ">
+                        <label style="color:red">Teklif Tarihi</label>
+                        @Html.TextBoxFor(x => x.OfferDate, new { type = "date", @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:red">Salon Numarası</label>
+                        @Html.DropDownList("SaloonId", (SelectList)ViewBag.Saloon, "", new { @class = "form-control" })
+                    </div>
+
+
+                    <div class="form-group">
+                        <label style="color:red">Stand Codu</label>
+                        @Html.DropDownList("StandId", (SelectList)ViewBag.Stand, "", new { @class = "form-control" })
+                    </div>
+
+
+                    <div class="form-group">
+                        <label style="color:red">Teklif Verilen Metre2</label>
+                        @Html.TextBoxFor(x => x.OfferSquare, new { @class = "form-control", placeholder = "Teklif verilen metrekareyi yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:red">M2 Birim Fiyatı</label>
+                        @Html.TextBoxFor(x => x.SquarePrice, new { @class = "form-control", placeholder = "Metrekare birim fiyatını yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:red">Döviz Cinsi</label>
+                        @Html.DropDownList("CurrencyId", (SelectList)ViewBag.Currency, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:red">Döviz Kuru</label>
+                        @Html.TextBoxFor(x => x.ExchangeRate, new { @class = "form-control", placeholder = "Döviz kuru fiyatını yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:red">Vade Sayısı</label>
+                        @Html.TextBoxFor(x => x.MaturityNumber, new { @class = "form-control", placeholder = "Vade sayısını yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:red">Ödeme Planı</label>
+                        @Html.TextAreaFor(x => x.PaymentPlan, new { @class = "form-control", placeholder = "Ödeme planını yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:red">Teklifin Son Geçerlilik Tarihi</label>
+                        @Html.TextBoxFor(x => x.OfferDeadline, new { type = "date", @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön", "Index", "Offer", null, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

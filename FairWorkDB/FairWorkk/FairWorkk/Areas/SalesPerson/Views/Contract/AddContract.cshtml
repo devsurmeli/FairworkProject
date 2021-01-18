@@ -1,0 +1,106 @@
+﻿@model Contract
+@{
+    ViewBag.Title = "AddContract";
+    Layout = "~/Areas/SalesPerson/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Sözleşme Ekleme";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+                @using (Html.BeginForm("AddContract", "Contract", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>Sözleşme Tarihi</label>
+                        @Html.TextBoxFor(x => x.ContractDate, new { type = "date", @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Satış Personeli Sicil Nosu</label>
+                        @Html.DropDownList("SalesPersonId", (SelectList)ViewBag.SalesPersonId, "Lütfen ilgilenen satış danışmanını saçin....", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Firma Bilgileri Id'sını Seçin</label>
+                        @Html.DropDownList("CompanyInformationId", (SelectList)ViewBag.CompanyInformationId, "Lütfen Firma Bilgisi için seçin....", new { @class = "form-control" })
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sözleşme Tipi</label>
+                        @Html.DropDownList("ContractTypeId", (SelectList)ViewBag.ContractTypeId, "Lütfen sözleşme tipini seçin....", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <h5 style="color:red">Not:Eğer stand tipiniz  BOS ALAN ise boş alan bilgilerini doldur...</h5>
+                        <label>Stand Tipi</label>
+                        @Html.DropDownList("StandTypeId", (SelectList)ViewBag.StandTypeId, "Lütfen stand tipini seçin...", new { @class = "form-control" })
+                        <br />
+                        @Html.ActionLink("Bos Alan Ekle", "FreeAdd", "FreeArea", null, new { @class = "btn btn-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Satın Alınan M2</label>
+                        @Html.DropDownList("StandId", (SelectList)ViewBag.StandId, "Lütfen satın alınan codu seçin.....", new { @class = "form-control" })
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>M2 Birim Fiyati</label>
+                        @Html.TextBoxFor(x => x.SquarePrice, new { @class = "form-control", placeholder = "Birim fiyatını yazınız....." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Döviz Cinsi</label>
+                        @Html.DropDownList("CurrencyId", (SelectList)ViewBag.CurrencyId, "Lütfen döviz cinsini seçin....", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Döviz Kuru</label>
+                        @Html.TextBoxFor(x => x.EcxhangeRate, new { @class = "form-control", placeholder = "Döviz kurunu yazınız....." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>İndirim Oranı</label>
+                        @Html.TextBoxFor(x => x.DiscountRate, new { @class = "form-control", placeholder = "İndirim oranını yazınız...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Vade Sayısı</label>
+                        @Html.TextBoxFor(x => x.MaturityNumber, new { @class = "form-control", placeholder = "Vade sayısını yazınız...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ödeme Planı</label>
+                        @Html.TextAreaFor(x => x.PaymentPlan, new { @class = "form-control", placeholder = "Ödeme planını yazınız...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Toplam Fiyat</label>
+                        @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control", placeholder = "Toplam tutarı yazınız...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sözleşme Son Geçerlilik Tarihi</label>
+                        @Html.TextBoxFor(x => x.ContractDeadline, new { @class = "form-control", type = "date" })
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox">
+                            @Html.EditorFor(x => x.ContractSigned)
+                            <label>Sözleşme İmzalı mı</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:red">Not: Boş alan seçilmişse boş lanı doldurmayı unutmayınız!!!!!</label><br />
+                        <button type="submit" class="btn btn-lg btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön","Index","Contract",null,new { @class="btn btn-lg btn-danger"})
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

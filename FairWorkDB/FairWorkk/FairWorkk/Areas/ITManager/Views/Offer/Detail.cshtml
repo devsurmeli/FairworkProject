@@ -1,0 +1,33 @@
+﻿@model List<Offer>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Teklif Bilgilierin Detay";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>Teklif Bilgisinin ID'sı: <label style="color:darkred">@item.ID</label></h5></center><br />
+                <center><h5>Teklif Tarihi :<label style="color:darkred">@item.OfferDate.ToString("d")</label></h5></center><br />
+                <center><h5>Salon Adı :<label style="color:darkred">@item.Saloon.SalonName</label></h5></center><br />
+                <center><h5>Stand Kodu :<label style="color:darkred">@item.Stand.Code</label></h5></center><br />
+                <center><h5>Teklif Verilen M2 :<label style="color:darkred">@item.OfferSquare</label></h5></center><br />
+                <center><h5>M2 Birim Fiyatı :<label style="color:darkred">@item.SquarePrice</label></h5></center><br />
+                <center><h5>Döviz Cinsi :<label style="color:darkred">@item.Currency.CurrencyName</label></h5></center><br />
+                <center><h5>Döviz Kuru :<label style="color:darkred">@item.ExchangeRate</label></h5></center><br />
+                <center><h5>Vade Sayısı :<label style="color:darkred">@item.MaturityNumber</label></h5></center><br />
+                <center><h5>Ödeme Planı :<label style="color:darkred">@item.PaymentPlan</label></h5></center><br />
+                <center><h5>Teklifin Son Geçerlilik Tarihi :<label style="color:darkred">@item.OfferDeadline.ToString("d")</label></h5></center><br />
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "Offer", null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>
+

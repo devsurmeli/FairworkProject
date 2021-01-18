@@ -1,0 +1,66 @@
+﻿@model List<BudgetAndCurrentSale>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-gray-dark">
+            <div class="card-header">
+                <h3 class="card-title">Bütçe ve Gelir-Gider</h3>
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th style="width:auto">DüzenlenenTarih</th>
+                            <th style="width:auto">Sözleşme Toplam Tutar</th>
+                            <th style="width:auto">İlave Stand Toplam Tutar</th>
+                            <th style="width:auto">Diğer Hizmetler Toplam Tutar</th>
+                            <th style="width:auto">Yurtdışı Ofislere Komisyon Toplam Tutar</th>
+                            <th style="width:auto">KDV Toplam Tutar</th>
+                            <th style="width:auto">Kurum Vergi Toplam Tutar</th>
+                            <th style="width:auto">Yedek Akçe Toplam Tutar</th>
+                            <th style="width:auto">Güncel Tutar</th>
+                            <th style="width:auto">Dolar Kuru</th>
+                            <th style="width:auto">Dolar Tutarı</th>
+                            <th style="width:auto">Euro Kuru</th>
+                            <th style="width:auto">Euro Tutarı</th>
+                            <th style="width:auto">TL Tutarı</th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.Date.ToString("d")</td>
+                                <td>@item.ContractTotal</td>
+                                <td>@item.AdditionalStandTotal</td>
+                                <td>@item.OtherTotal</td>
+                                <td>@item.ComisyonTotal</td>
+                                <td>@item.KDVTotal</td>
+                                <td>@item.CorporateTaxTotal</td>
+                                <td>@item.ReserveFundTotal</td>
+                                <td>@item.Total</td>
+                                <td>@item.DollarExchangeRate</td>
+                                <td>@item.DollarTotal</td>
+                                <td>@item.EuroExchangeRate</td>
+                                <td>@item.EuroTotal</td>
+                                <td>@item.TurkıshLiraTotal</td>
+                                <td>
+                                    @Html.ActionLink("Ekle", "Add", "Budget", null, new { @class = "btn btn-secondary" }) <br /> @Html.ActionLink("Güncelle", "Update", new { id = item.ID }, new { @class = "btn btn-dark" })<br />
+                                   @Html.ActionLink("Sil","Delete",new { id=item.ID},new { @class="btn btn-secondary"})
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

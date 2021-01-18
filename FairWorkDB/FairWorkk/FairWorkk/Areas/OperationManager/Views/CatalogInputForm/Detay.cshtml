@@ -1,0 +1,26 @@
+﻿@model List<CatalogInputForm>
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Areas/OperationManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>ID: <label style="color:darkred">@item.ID</label></h5></center>
+                <center><h5>Firma Adı: <label style="color:darkred">@item.Company.CompanyName</label></h5></center>
+                <center><h5>Firma Adresi: <label style="color:darkred">@item.Company.Address</label></h5></center>
+                <center><h5>Telefonu: <label style="color:darkred">@item.Company.Phone</label></h5></center>
+                <center><h5>E-Posta: <label style="color:darkred">@item.Company.Email</label></h5></center>
+                <center><h5>Faks: <label style="color:darkred">@item.Company.Fax</label></h5></center>
+                <center><h5>Ürün Grupları: <label style="color:darkred">@item.ProductGroup.ProductCode </label></h5></center>
+                <center><h5>Karışılık Gelen Ürün Adı: <label style="color:darkred">@item.ProductGroup.Product.ProductName</label></h5></center>
+                <center><h5>Firma Tipi: <label style="color:darkred">@item.CompanyProfile.ProfileName</label></h5></center>
+                <center><h5>@Html.ActionLink("Geri Dön", "Index", "OtherServices", new { @class = "btn btn-secondary" }) </h5></center>
+            }
+        </div>
+    </div>
+</div>
+

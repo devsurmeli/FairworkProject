@@ -1,0 +1,34 @@
+﻿@model Saloon
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Salon Ekleme";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+                @using (Html.BeginForm("Add", "Saloon", FormMethod.Post))
+                {
+
+                    <div class="form-group">
+                        <label>Salon Adı</label>
+                        @Html.TextBoxFor(x => x.SalonName, new { @class = "form-control", placeholder = "Fuar salon adını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sektor Seçin</label>
+                        @Html.DropDownList("SectorId", (SelectList)ViewBag.Sector, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön", "Index", "Saloon", null, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

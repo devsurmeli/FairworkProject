@@ -1,0 +1,54 @@
+﻿@model List<HiddenDiscount>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/GroupSalesManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card-danger">
+    <div class="card-header">
+        <h3 class="card-title" style="color:white">Gizli İndirim</h3>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:auto;height:auto">Gizli İndirim ID</th>
+                    <th style="width:auto;height:auto">Firma Bilgileri</th>
+                    <th style="width:auto;height:auto">Salon Bilgileri</th>
+                    <th style="width:auto;height:auto">Stand Bilgileri</th>
+                    <th style="width:auto;height:auto">M2 Birim Fiyati</th>
+                    <th style="width:auto;height:auto">Eni</th>
+                    <th style="width:auto;height:auto">Boyu</th>
+                    <th style="width:auto;height:auto">Alanı</th>
+                    <th style="width:auto;height:auto">Döviz Cinsi</th>
+                    <th style="width:auto;height:auto">Döviz Kuru</th>
+                    <th style="width:auto;height:auto">Toplam Fiyat</th>
+                    <th style="width:auto;height:auto"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var hidden in Model)
+                {
+                    <tr>
+                        <td>@hidden.ID</td>
+                        <td>Firma ID:@hidden.CompanyId<br />Firma Adı:@hidden.Company.CompanyName</td>
+                        <td>@hidden.Saloon.SalonName</td>
+                        <td>@hidden.Stand.Code</td>
+                        <td>@hidden.MeterPrice</td>
+                        <td>@hidden.Width</td>
+                        <td>@hidden.Length</td>
+                        <td>@hidden.Area</td>
+                        <td>@hidden.Currency.CurrencyName</td>
+                        <td>@hidden.ExchangeRate</td>
+                        <td>@hidden.TotalPrice</td>
+                        <td>
+                            @Html.ActionLink("Detay", "Detay", new { id = hidden.ID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

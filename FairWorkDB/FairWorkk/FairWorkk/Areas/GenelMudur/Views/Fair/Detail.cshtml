@@ -1,0 +1,27 @@
+﻿@model List<Fair>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/GenelMudur/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Fuar Bilgileri";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>Fuar ID: <label style="color:darkred">@item.ID</label></h5></center>
+                <center><h5>Fuar Adı :<label style="color:darkred">@item.FairName</label></h5></center>
+                <center><h5>Başlama ve Bitiş Tarihi :<label style="color:darkred">@item.StartDate.ToString("d")-@item.FinishDate.ToString("d")</label></h5></center>
+                <center><h5>Adresi :<label style="color:darkred">@item.Address</label></h5></center>
+                <center><h5>Fuarın Sectoru :<label style="color:darkred">@item.Saloon.Sector.SectorAdı</label></h5></center><br />
+                <center><img src="@item.ImagePat" style="height:750px;width:750px" /></center><br />
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "Fair", null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>

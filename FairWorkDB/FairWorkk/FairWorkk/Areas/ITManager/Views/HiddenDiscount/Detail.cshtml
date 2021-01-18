@@ -1,0 +1,48 @@
+﻿@model List<HiddenDiscount>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Gizli İndirim Detay Sayfası";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>Gizli İndirim ID: <label style="color:darkred">@item.ID</label></h5></center><br />
+                <center>
+                    <h5>
+                        Firma ID: <label style="color:darkred"> @item.Company.ID</label><br />
+                        Firma Adı: <label style="color:darkred">@item.Company.CompanyName</label><br />
+                        Firma Yetkilisi: <label style="color:darkred">@item.Company.CompanyOfficial</label><br />
+                        Firma Unvanı: <label style="color:darkred">@item.Company.Title</label><br />
+                        Firma Telefonu: <label style="color:darkred">@item.Company.Phone</label><br />
+                        Firma Emaili: <label style="color:darkred">@item.Company.Email</label><br />
+                        Firma Fax: <label style="color:darkred">@item.Company.Fax</label><br />
+                        Firma Addresi: <label style="color:darkred">@item.Company.Address</label><br />
+                        Firma Ülkesi: <label style="color:darkred">@item.Company.Country.CountryName</label><br />
+                        Firma Sectorü: <label style="color:darkred">@item.Company.Sector.SectorAdı</label><br />
+                        Firmanın Katıldığı Fuar Sayısı: <label style="color:darkred">@item.Company.FairAttendance</label><br />
+                    </h5>
+                </center><br />
+                <center><h5>Salon Adı :<label style="color:darkred">@item.Saloon.SalonName</label></h5></center><br />
+                <center><h5>Stand Kodu :<label style="color:darkred">@item.Stand.Code</label></h5></center><br />
+                <center><h5>M2 Birim Fiyatı : <label style="color:darkred">@item.MeterPrice</label></h5></center><br />
+                <center><h5>Eni: <label style="color:darkred">@item.Width</label></h5></center><br />
+                <center><h5>Boyu:<label style="color:darkred">@item.Length</label></h5></center><br />
+                <center><h5>Alanı :<label style="color:darkred">@item.Area</label></h5></center><br />
+                <center><h5>Döviz Cinsi :<label style="color:darkred">@item.Currency.CurrencyName</label></h5></center><br />
+                <center><h5>Döviz Kuru :<label style="color:darkred">@item.ExchangeRate</label></h5></center><br />
+                <center><h5>Toplam Fiyat :<label style="color:darkred">@item.TotalPrice</label></h5></center><br />
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "HiddenDiscount", null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>
+
+

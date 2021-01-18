@@ -1,0 +1,40 @@
+﻿@model List<Company>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/SalesPerson/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>ID: <label style="color:darkred">@item.ID</label></h5></center><br />
+                <center>
+                    <h5>
+                        Firma ID: <label style="color:darkred"> @item.ID</label><br />
+                        Firma Adı: <label style="color:darkred">@item.CompanyName</label><br />
+                        Firma Yetkilisi: <label style="color:darkred">@item.CompanyOfficial</label><br />
+                        Firma Unvanı: <label style="color:darkred">@item.Title</label><br />
+                        Firma Telefonu: <label style="color:darkred">@item.Phone</label><br />
+                        Firma Dahili: <label style="color:darkred">@item.Intercom</label><br />
+                        Firma Emaili: <label style="color:darkred">@item.Email</label><br />
+                        Firma Fax: <label style="color:darkred">@item.Fax</label><br />
+                        Firma Addresi: <label style="color:darkred">@item.Address</label><br />
+                        Firma Sehiri: <label style="color:darkred">@item.City</label><br />
+                        Firma Ülkesi: <label style="color:darkred">@item.Country.CountryName</label><br />
+                        Firma Sectorü: <label style="color:darkred">@item.Sector.SectorAdı</label><br />
+                        Firmanın Katıldığı Fuar Sayısı: <label style="color:darkred">@item.FairAttendance</label><br />
+                    </h5>
+                </center>
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "Company", null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>
+
+

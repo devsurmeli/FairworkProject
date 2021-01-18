@@ -1,0 +1,64 @@
+﻿@model List<Guest>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Ziyaretçi Listesi";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h3 class="card-title">Ziyaretçi Bilgileri</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: auto">ID</th>
+                            <th style="width: auto">Adi</th>
+                            <th style="width: auto">Soyadi</th>
+                            <th style="width: auto">Firma Adi</th>
+                            <th style="width: auto">Adresi</th>
+                            <th style="width: auto">Telefon</th>
+                            <th style="width: auto">E-Mail</th>
+                            <th style="width: auto">Meslek</th>
+                            <th style="width: auto">Katıldığı Fuar</th>
+                            <th style="width: auto">Aldığı Bilet Tipi</th>
+                            <th style="width: auto">QR Kodu</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.Name</td>
+                                <td>@item.Surname</td>
+                                <td>@item.CompanyName</td>
+                                <td>@item.Adress</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Email</td>
+                                <td>@item.Profession.ProfessionName</td>
+                                <td>@item.Fair.FairName</td>
+                                <td>@item.TicketType.TypeName</td>
+                                <td><img src="@item.QrCodeImage" style="height:150px;width:150px" /></td>
+                                <td>
+                                    @Html.ActionLink("Detay", "Detail", new { id = item.ID }, new { @class = "btn btn-info" })<br />
+                                    @Html.ActionLink("Ekle", "Add", "Guest", null, new { @class = "btn btn-success" })<br />
+                                    @Html.ActionLink("Güncelle", "Update", new { id = item.ID }, new { @class = "btn btn-danger" })<br />
+                                    @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-secondary" })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

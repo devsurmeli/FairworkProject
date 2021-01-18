@@ -1,0 +1,68 @@
+﻿@model List<Contract>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/GroupSalesManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-danger">
+            <div class="card-header">
+                <center><h3 style="color:white">Sözleşme Bilgilerinin Listesi </h3></center>
+
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width:auto">ID</th>
+                            <th style="width:auto">Sözleşme Tarihi</th>
+                            <th style="width:auto">Görüşmeyi Yapan Satış Personel</th>
+                            <th style="width:auto">Firma Bilgileri</th>
+                            <th style="width:auto">Sözleşme Tipi</th>
+                            <th style="width:auto">Stand Tipi</th>
+                            <th style="width:auto">Satın Alınan M2</th>
+                            <th style="width:auto">M2 Birim Fiyatı</th>
+                            <th style="width:auto">Döviz Cinsi</th>
+                            <th style="width:auto">Döviz Kuru</th>
+                            <th style="width:auto">İndirim Oranı</th>
+                            <th style="width:auto">Vade Sayısı</th>
+                            <th style="width:auto">Ödeme Planı</th>
+                            <th style="width:auto">Toplam Tutarı</th>
+                            <th style="width:auto">Sözleşme Son Geçerlilik Tarihi</th>
+                            <th style="width:auto">İmzalı Sözleşme Durumu</th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.ContractDate.ToString("d")</td>
+                                <td>Sicil No:@item.SalesPersonId <br />Ad-Soyad:@item.SalesPerson.FullName</td>
+                                <td>ID :@item.CompanyInformationId<br />@item.CompanyInformation.Company.CompanyName<br />@item.CompanyInformation.Adress<br />@item.CompanyInformation.Phone<br />@item.CompanyInformation.TaxAuthority<br />@item.CompanyInformation.TaxNumber<br />@item.CompanyInformation.FairOfficial</td>
+                                <td>@item.ContractType.TypeName</td>
+                                <td>@item.StandType.TypeName</td>
+                                <td>Salon:@item.Stand.Saloon.SalonName<br />Stand Kodu:@item.Stand.Code<br />Eni:@item.Stand.Width<br />Boyu:@item.Stand.Height</td>
+                                <td>@item.SquarePrice</td>
+                                <td>@item.Currency.CurrencyName</td>
+                                <td>@item.EcxhangeRate</td>
+                                <td>@item.DiscountRate%</td>
+                                <td>@item.MaturityNumber</td>
+                                <td>@item.PaymentPlan</td>
+                                <td>@item.TotalPrice</td>
+                                <td>@item.ContractDeadline.ToString("d")</td>
+                                <td>@item.ContractSigned</td>
+                                <td>
+                                    @Html.ActionLink("Detay", "Detail", new { id = item.ID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

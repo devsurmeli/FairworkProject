@@ -1,0 +1,51 @@
+﻿@model List<Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Çalışanların Listesi";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-gray-dark">
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th style="width:auto">Adı-Soyadı</th>
+                            <th style="width:auto">Unvanı</th>
+                            <th style="width:auto">Email</th>
+                            <th style="width:auto">Departman Adı</th>
+                            <th style="width:auto"></th>
+                            <th style="width:auto"></th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.FullName</td>
+                                <td>@item.Title</td>
+                                <td>@item.Email</td>
+                                <td>@item.DepartmanName</td>
+                                <td>
+                                    @Html.ActionLink("Detay", "Detail", new { id = item.ID }, new { @class = "btn btn-dark" })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Ekle", "Add", "Employee", null, new { @class = "btn btn-secondary" })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

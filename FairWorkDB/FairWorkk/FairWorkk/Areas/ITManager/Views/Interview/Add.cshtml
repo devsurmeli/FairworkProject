@@ -1,0 +1,73 @@
+﻿@model Interview
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Görüşme Ekkle";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group-lg">
+                        <label>Görüşmeyi Yapan Satış Personeli</label>
+                        @Html.DropDownList("SalesPersonId", (SelectList)ViewBag.SalesPersonId, "", new { @class = "form-control" })
+                    </div><br />
+
+                    <div class="form-group-lg">
+                        <label>Görüşme Tarihi</label>
+                        @Html.TextBoxFor(x => x.OfferDate, new { type = "date", @class = "form-control" })
+                    </div><br />
+
+                    <div class="form-group-lg">
+                        <label>Görüşülen Kişi Bilgileri</label>
+                        @Html.DropDownList("IntervieweeId", (SelectList)ViewBag.IntervieweeId, "", new { @class = "form-control" })
+
+                    </div><br />
+
+                    <div class="form-group-lg">
+                        <label>Firmanın İlgilendiği Sektör</label>
+                        @Html.DropDownList("SectorId", (SelectList)ViewBag.SectorId, "", new { @class = "dropdown form-control " })
+                    </div><br />
+
+                    <div class="form-group-lg">
+                        <label>Firmanın Profili</label>
+                        @Html.DropDownList("CompanyProfileId", (SelectList)ViewBag.CompanyProfileId, "", new { @class = "dropdown form-control " })
+                    </div><br />
+
+                    <div class="form-group-lg">
+                        <label>Firmanın İlgilendiği Fuar</label>
+                        @Html.DropDownList("FairId", (SelectList)ViewBag.FairId, "", new { @class = "dropdown form-control" })
+                    </div><br />
+
+                    <div class="form-group-lg">
+                        <label>Firmanın İlgilendiği Salon</label>
+                        @Html.DropDownListFor(x => x.SaloonId, (SelectList)ViewBag.SaloonId, "", new { @class = "dropdown form-control" })
+                    </div><br />
+
+                    <div class="form-group-lg">
+                        <label>Görüşme Notları</label>
+                        @Html.TextAreaFor(x => x.Notes, new { @class = "form-control", placeholder = "Görüşme Notlarını Yazınız...." })
+                    </div><br />
+
+                    <div class="form-group">
+                        <button type="submit" id="btnSelected" class="btn btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön", "Index", "Interview", null, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@*<script>
+        $(function () {
+            $('#multipled').chosen({
+                width: "100%"
+            });
+        });
+    </script>*@

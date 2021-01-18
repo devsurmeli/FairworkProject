@@ -1,0 +1,128 @@
+﻿@model List<Fair>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="myCarousel" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="fill" style="background-image: url('https://i2.wp.com/nlmdirector.nlm.nih.gov/wp-content/uploads/2018/02/fairuse_key.jpg?fit=900%2C300&ssl=1');"></div>
+            <div class="carousel-caption">
+                <h2>yaratici ve modern fuar deneyimi</h2>
+                <a href="#" class="button">SEE MORE</a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image: url('https://www.datatree.com/hubfs/cv-media/asg_WbwffCGwrqoSMkRm2Frevision-2F1536613581304-DataTree-Sept3.png'); "></div>
+            <div class="carousel-caption">
+                <h2>haftalik ve aylik fuarlar</h2>
+                <a href="#" class="button">SEE MORE</a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image: url('https://www.pastoraltour.com/media/almanya-turu-munih.png');"></div>
+            <div class="carousel-caption">
+                <h2>eglenceli ve kazançli fuar</h2>
+                <a href="#" class="button">SEE MORE</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <i class="fa fa-angle-left"></i>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <i class="fa fa-angle-right"></i>
+    </a>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="block-icon">
+                    <i class="fa fa-rocket"></i>
+                </div>
+
+                <div class="block-body">
+                    <h2>Alicilar</h2>
+                    <div class="line-subtitle"></div>
+                    <p>Üreticilerin ürünlerini kolayca bulabilmeniz için , alıcılara eksiksiz bir sanal fuar ve B2B platform deneyimi sunuyoruz. Alıcılar alım talepleri konusunda, ürünlerin güncel bilgilerine anlık ulaşabilir; önde gelen üreticilerden özel fiyat teklifleri talep edebilir ve karşılaştırma yapabilir ; Size dünya çapında binlerce ürüne göz atma imkanı sağlar.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="block-icon">
+                    <i class="fa fa-users"></i>
+                </div>
+
+                <div class="block-body">
+                    <h2>Üreticiler</h2>
+                    <div class="line-subtitle"></div>
+                    <p>Online fuar alanlarımızın her birinde , çevrimiçi görünürlüklerini artırmalarına ve web sitelerine trafik sağlamalarına olanak tanıyan özelleştirilmiş hizmetlerimizden ve özel SEO araçlarımızdan yararlanırlar. Üreticiler satış hedefleri, uluslararası görünürlük, marka oluşturma, satış ağları ve ölçülebilir sonuçlar ile elde etmek için ürünlerini sergileyerek satış hedeflerine ulaşabilirler.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="block-icon">
+                    <i class="fa fa-cog"></i>
+                </div>
+
+                <div class="block-body">
+                    <h2>Tüketiciler</h2>
+                    <div class="line-subtitle"></div>
+                    <p>Tüketici, iktisadi mal ve hizmetleri belirli bir bedel karşılığında satın alarak kullanan kişidir. Tüketim denildiğinde daha çok maddi anlamda tüketim anlaşılmaktadır. Hâlbuki maddi tüketim öğelerinin dışında maddi olmayan kültür, eğlence gibi tüketim öğeleri de vardır.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-colored home">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-9 col-sm-8">
+                <h2>Katilimci ol hadi sende ne duruyorsun kazanmak senin elinde durucagina yandaki butona bas</h2>
+            </div>
+            <div class="col-md-3 col-sm-4">
+                <a href="/Company/Add" class="btn btn-danger btn-lg">Katilimci Kayit</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="section" id="recent-projects" style="position: relative;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="section-title">Fuarlar</h2>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <a href="/Fair/Detay/@item.ID" class="link-portfolio">
+                        <div class="overlay-portfolio">
+                            <h3>@item.FairName</h3>
+                            <small class="text-muted">
+                                @item.Address
+                            </small>
+                        </div><!-- /.overlay-portfolio -->
+                        <img class="img-responsive img-home-portfolio" src="@item.ImagePat" style="width:300px;height:200px" alt="portfolio 1">
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

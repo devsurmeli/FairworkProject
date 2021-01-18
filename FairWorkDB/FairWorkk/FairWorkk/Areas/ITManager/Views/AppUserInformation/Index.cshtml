@@ -1,0 +1,54 @@
+﻿@model List<AppUserInformation>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Kullanıcı Bilgileri Listesi";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card-gray-dark">
+            <div class="card-header">
+                <h3 class="card-title">Kullanıcı Bilgileri</h3>
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th style="width:auto">Adı-Soyadı</th>
+                            <th style="width:auto">Telefonu</th>
+                            <th style="width:auto">Email Adresi</th>
+                            <th style="width:auto">Cinsiyeti</th>
+                            <th style="width:auto">Kullanıcı Adı</th>
+                            <th style="width:auto">Rolu</th>
+
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.FullName</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Email</td>
+                                <td>@item.Gender</td>
+                                <td>@item.AppUser.UserName</td>
+                                <td>@item.Role.Role1</td>
+                                
+                                <td>
+                                    @Html.ActionLink("Ekle", "Add", "AppUserInformation", null, new { @class = "btn btn-info" })<br />
+                                    @Html.ActionLink("Güncelle", "Update", new { id = item.ID }, new { @class = "btn btn-warning" })<br />
+                                    @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

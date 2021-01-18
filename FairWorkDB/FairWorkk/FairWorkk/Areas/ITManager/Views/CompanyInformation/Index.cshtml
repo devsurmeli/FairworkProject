@@ -1,0 +1,60 @@
+﻿@model List<CompanyInformation>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Firma Bilgileri Listesi ";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-gray-dark">
+            <div class="card-header">
+                <h3 class="card-title">Firma Kısa Bilgileri</h3>
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th style="width:auto">Firma Bilgileri</th>
+                            <th style="width:auto">Adresi</th>
+                            <th style="width:auto">Telefonu</th>
+                            <th style="width:auto">Vergi Dairesi</th>
+                            <th style="width:auto">Vergi Numarası</th>
+                            <th style="width:auto">Fuar Yetkilisi</th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>
+                                    Firma ID: @item.Company.ID<br />
+                                    Firma Adı: @item.Company.CompanyName<br />
+                                    Firma Yetkilisi : @item.Company.CompanyOfficial<br />
+                                    Telefonu: @item.Company.Phone<br />
+                                    Email: @item.Company.Email<br />
+                                    Adresi: @item.Company.Address<br />
+                                </td>
+                                <td>@item.Adress</td>
+                                <td>@item.Phone</td>
+                                <td>@item.TaxAuthority</td>
+                                <td>@item.TaxNumber</td>
+                                <td>@item.FairOfficial</td>
+                                <td>
+                                    @Html.ActionLink("Detay", "Detail", new { id = item.ID }, new { @class = "btn btn-success" })<br />
+                                    @Html.ActionLink("Ekle", "Add", "CompanyInformation", null, new { @class = "btn btn-info" })<br />
+                                    @Html.ActionLink("Güncelle", "Update", new { id = item.ID }, new { @class = "btn btn-warning" })<br />
+                                    @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

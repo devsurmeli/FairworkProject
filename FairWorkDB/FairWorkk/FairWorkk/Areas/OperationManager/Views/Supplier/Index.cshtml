@@ -1,0 +1,47 @@
+﻿@model List<Supplier>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/OperationManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Tedarikçi Listesi";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-gray-dark">
+            <div class="card-header">
+                <h3 class="card-title">Tedarikçi Kısa Bilgileri</h3>
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th style="width:auto">Tedarikçi Firma Adı</th>
+                            <th style="width:auto">Adı-Soyadı</th>
+                            <th style="width:auto">Adresi</th>
+                            <th style="width:auto">Telefonu</th>
+                            <th style="width:auto">Email Adresi</th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.CompanyName</td>
+                                <td>@item.Name  @item.Surname</td>
+                                <td>@item.Address</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Email</td>
+                                <td> @Html.ActionLink("Detay", "Detail", new { id = item.ID }, new { @class = "btn btn-dark" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

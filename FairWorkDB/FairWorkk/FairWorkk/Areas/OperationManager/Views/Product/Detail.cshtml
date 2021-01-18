@@ -1,0 +1,25 @@
+﻿@model List<Product>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/OperationManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Ürün Detay Sayfası";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-dark">
+            @foreach (var item in Model)
+            {
+                <center><h5>ID: <label style="color:darkred">@item.ID</label></h5></center><br />
+                <center><h5>Ürün Adı :<label style="color:darkred">@item.ProductName</label></h5></center><br />
+                <center><h5>Ürün Fiyatı :<label style="color:darkred">@item.ProductPrice</label></h5></center><br />
+                <center><h5>Özellikleri :<label style="color:darkred">@item.Features</label></h5></center><br />
+                <center>
+                    <h5>
+                        @Html.ActionLink("Geri Dön", "Index", "Product", null, new { @class = "btn btn-secondary" })
+                    </h5>
+                </center>
+            }
+        </div>
+    </div>
+</div>

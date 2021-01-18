@@ -1,0 +1,45 @@
+﻿@model CompanyNeed
+@{
+    ViewBag.Title = "Add";
+    TempData["Title"] = "Firmanın İhtiyaç Ekleme";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3>Katilimci Firma İhtiyaç Ekleme Formu</h3>
+        <br />
+        @using (Html.BeginForm("Add", "Need", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Firma Adı</label>
+                @Html.DropDownList("CompanyId", (SelectList)ViewBag.Company, "", new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Davetiye Sayısı</label>
+                @Html.TextBoxFor(x => x.InvitationNumber, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Poster Sayısı</label>
+                @Html.TextBoxFor(x => x.PosterNumber, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Personel Giriş Kart Sayısı</label>
+                @Html.TextBoxFor(x => x.PersonelEntryCardNumber, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Personel Otopark Giriş Kart Sayısı</label>
+                @Html.TextBoxFor(x => x.StaffParkingEntryCardNumber, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn  btn-danger pull-right">Talebini Gönder</button>
+                @Html.ActionLink("Geri Dön","Index","Need",null,new { @class="btn btn-dark"})
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model AdditionalStandMaterial
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/OperationManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Ekleme Sayfası";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group">
+                        <label>Firma Seç</label>
+                        @Html.DropDownList("CompanyId", (SelectList)ViewBag.Company, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fuarı Seç</label>
+                        @Html.DropDownList("FairId", (SelectList)ViewBag.Fair, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stand Adını Yaz</label>
+                        @Html.TextBoxFor(x => x.StandName, new { @class = "form-control", placeholder = "Stand adını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stand Kodu</label>
+                        @Html.TextBoxFor(x => x.StandCode, new { @class = "form-control", placeholder = "Stand kodunu yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stand Fiyatı</label>
+                        @Html.TextBoxFor(x => x.StandPrice, new { @class = "form-control", placeholder = "Stand fiyatını yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Toplam Fiyat</label>
+                        @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control", placeholder = "Standların toplam fiyati yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stand Özellikleri</label>
+                        @Html.TextBoxFor(x => x.StandFeatures, new { @class = "form-control", placeholder = "Stand özellikleri yazın.." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tedarikçiyi Seç</label>
+                        @Html.DropDownList("SupplierId", (SelectList)ViewBag.Supplier, "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön", "Index", "AdditionalStandMaterial", null, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

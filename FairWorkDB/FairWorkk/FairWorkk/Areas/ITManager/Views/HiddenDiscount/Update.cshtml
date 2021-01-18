@@ -1,0 +1,75 @@
+﻿@model HiddenDiscount
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/ITManager/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Gizli İndirim Güncelleme Sayfası";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(x=>x.ID)
+
+                    <div class="form-group">
+                        <label>Firmayı Seçin</label>
+                        @Html.DropDownList("CompanyId", (SelectList)ViewBag.Company, "Lütfen Firmayı seçiniz...", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Salonu Seçin</label>
+                        @Html.DropDownList("SaloonId", (SelectList)ViewBag.Saloon, "Lütfen Salonu seçin", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Standı Kodu Seçin</label>
+                        @Html.DropDownList("StandId", (SelectList)ViewBag.Stand, "Lütfen Stand kodunu seçin", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>M2 Birim Fiyatı</label>
+                        @Html.TextBoxFor(x => x.MeterPrice, new { @class = "form-control", placeholder = "Metrekare birim fiyatını yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Eni</label>
+                        @Html.TextBoxFor(x => x.Width, new { @class = "form-control", placeholder = "Lütfen stand enini yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Boyu</label>
+                        @Html.TextBoxFor(x => x.Length, new { @class = "form-control", placeholder = "Lütfen stand boyunu yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Alanı</label>
+                        @Html.TextBoxFor(x => x.Area, new { @class = "form-control", placeholder = "Lütfen stand alanını yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Döviz Cinsi</label>
+                        @Html.DropDownList("CurrencyId", (SelectList)ViewBag.Currency, "Lütfen döviz cinsini seçin", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Döviz Kuru</label>
+                        @Html.TextBoxFor(x => x.ExchangeRate, new { @class = "form-control", placeholder = "Döviz kuru fiyatını yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Toplam Fiyat</label>
+                        @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control", placeholder = "Toplam fiyatını yazınız..." })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Kaydet</button>
+                        @Html.ActionLink("Geri Dön", "Index", "HiddenDiscount", null, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

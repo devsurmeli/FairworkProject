@@ -1,0 +1,54 @@
+﻿@model List<ADMFAPayment>
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Areas/ReferencesManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-12">
+            <center>
+                <h5>Sıra ID = <span style="color:red">@item.ID</span></h5><br />
+                <h5 style="color:cornflowerblue">Katılımcı Firma Bilgileri</h5>
+                <label>
+                    Firma ID = <span style="color:red">@item.CompanyId</span><br />
+                    Firma Adı = <span style="color:red">@item.Company.CompanyName</span><br />
+                    Firma Yetkilisi = <span style="color:red">@item.Company.CompanyOfficial</span><br />
+                    Firma Unvani = <span style="color:red">@item.Company.Title</span><br />
+                    Firma Telefonu = <span style="color:red">@item.Company.Phone</span><br />
+                    Firma Dahili = <span style="color:red">@item.Company.Intercom</span><br />
+                    Firma Email Adresi = <span style="color:red">@item.Company.Email</span><br />
+                    Firma Fax = <span style="color:red">@item.Company.Fax</span><br />
+                    Firma Adresi = <span style="color:red">@item.Company.Address</span><br />
+                </label>
+                <h5 style="color:cornflowerblue">Fuar Bilgileri</h5>
+                <label>
+                    Fuar ID = <span style="color:red">@item.FairId</span><br />
+                    Fuar Adı = <span style="color:red">@item.Fair.FairName</span><br />
+                    Fuar Başlama ve Bitiş Tarihi = <span style="color:red">@item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d")</span><br />
+                    Fuar Adresi = <span style="color:red">@item.Fair.Address</span><br />
+                </label><br />
+                <h5 style="color:cornflowerblue">Boş Alan Seçili Mı? = <span style="color:red">@item.FreeArea</span></h5><br />
+                <h5 style="color:cornflowerblue">Boş Alan Toplam Tutarı = <span style="color:red">@item.FreeAreaTotalPrice</span></h5><br />
+                <h5 style="color:cornflowerblue">İlave Stand Bilgileri</h5>
+                <label>
+                    Stand ID = <span style="color:red">@item.AdditionalStandId</span><br />
+                    Stand Adı = <span style="color:red">@item.AdditionalStandMaterial.StandName</span><br />
+                    Stand Kodu = <span style="color:red">@item.AdditionalStandMaterial.StandCode</span><br />
+                    Toplamı = <span style="color:red">@item.AddiitionalStandTotalPrice</span><br />
+                    Özellikleri = <span style="color:red">@item.AdditionalStandMaterial.StandFeatures</span><br />
+                    Tedaikçi ID = <span style="color:red">@item.AdditionalStandMaterial.SupplierId</span><br />
+                </label>
+                <h5 style="color:cornflowerblue">Ödediği Tutarı = <span style="color:red">@item.AmountPaid</span></h5><br />
+                <h5 style="color:cornflowerblue">Kalan Tutarı = <span style="color:red">@item.AmountNotPaid</span></h5><br />
+                <h5 style="color:cornflowerblue">Toplam Tutarı = <span style="color:red">@item.TotalPrice</span></h5><br />
+                <h5 style="color:cornflowerblue">Dolar Tutarı = <span style="color:red">@item.DollarPrice$</span></h5><br />
+                <h5 style="color:cornflowerblue">Euro Tutarı = <span style="color:red">@item.EuroPrice€</span></h5><br />
+                <h5 style="color:cornflowerblue">TL Tutarı = <span style="color:red">@item.TurkıshLira₺</span></h5><br />
+                @Html.ActionLink("Geri Dön", "Index", "FreeArea", new { @class = "btn btn-lg btn-dark" })
+            </center>
+        </div>
+    }
+</div>
+

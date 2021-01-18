@@ -1,0 +1,51 @@
+﻿@model List<Interview>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/GenelMudur/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Satış Danışmanını Yaptığı Görüşme Bilgileri";
+}
+
+<div class="card card-cyan">
+    <div class="card-header ">
+        <h3 class="card-title" >Görüşme Bilgisi</h3>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:auto;height:auto">Görüşme ID</th>
+                    <th style="width:auto;height:auto">Görüşme Tarihi</th>
+                    <th style="width:auto;height:auto">Görüşmeyi Yapan Personel</th>
+                    <th style="width:auto;height:auto">Görüşülen Kişi</th>
+                    <th style="width:auto;height:auto">Firmanın Sektörü</th>
+                    <th style="width:auto;height:auto">Firmanın Profili</th>
+                    <th style="width:auto;height:auto">Firmanın İlgilendiği Fuar</th>
+                    <th style="width:auto;height:auto">Firmanın İlgilendiği Salon</th>
+                    <th style="width:auto;height:auto">Görüşme Notları</th>
+                    <th style="width:auto;height:auto"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@i.ID</td>
+                        <td>@i.OfferDate.ToString("d")</td>
+                        <td>Sicil No: @i.SalesPerson.ID<br />@i.SalesPerson.FullName<br />@i.SalesPerson.Phone</td>
+                        <td>ID: @i.Interviewee.ID<br />@i.Interviewee.FullName (@i.Interviewee.Title) <br />@i.Interviewee.Company.CompanyName<br />@i.Interviewee.Phone<br />@i.Interviewee.Email</td>
+                        <td>@i.Sector.SectorAdı</td>
+                        <td>@i.CompanyProfile.ProfileName</td>
+                        <td>@i.Fair.FairName</td>
+                        <td>@i.Saloon.SalonName</td>
+                        <td>@i.Notes</td>
+                        <td>
+                            @Html.ActionLink("Detay","Detay", new { id = i.ID }, new { @class = "btn btn-info" })
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

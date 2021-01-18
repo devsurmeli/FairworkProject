@@ -1,0 +1,71 @@
+﻿@model List<AdditionalStandMaterial>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ReferencesManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h3 class="card-title">İlave Stand Malzeme Bilgileri</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width:auto">ID</th>
+                            <th style="width:auto">Katılımcı Firma</th>
+                            <th style="width:auto">Fuar</th>
+                            <th style="width:auto">Stand Adı</th>
+                            <th style="width:auto">Kodu</th>
+                            <th style="width:auto">Fiyatı</th>
+                            <th style="width:auto">Toplam Fiyatı</th>
+                            <th style="width:auto">Özellikleri</th>
+                            <th style="width:auto">TedarikçiId</th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>
+                                    ID = @item.CompanyId<br />
+                                    Firma Adı = @item.Company.CompanyName
+                                </td>
+                                <td>
+                                    ID = @item.FairId<br />
+                                    Fuar Adı = @item.Fair.FairName
+                                </td>
+                                <td>@item.StandName</td>
+                                <td>@item.StandCode</td>
+                                <td>@item.StandPrice</td>
+                                <td>@item.TotalPrice</td>
+                                <td>@item.StandFeatures</td>
+                                <td>
+                                    Tedarikçi ID = @item.SupplierId<br />
+                                    Tedarikçi Firma Adı = @item.Supplier.CompanyName
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Detay", "Detay", new { id = item.ID }, new { @class = "btn btn-secondary" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+            <footer class="form-group">
+                <center>
+                    <h5> Toplam İlave Stand Malzeme Adeti = <span style="color:red">@Model.Count()</span></h5>
+                    <h5> Toplam İlave Stand Malzeme Fiyati = <span style="color:red">@Model.Sum(x => x.TotalPrice)$</span></h5>
+                </center>
+            </footer>
+        </div>
+    </div>
+</div>
+

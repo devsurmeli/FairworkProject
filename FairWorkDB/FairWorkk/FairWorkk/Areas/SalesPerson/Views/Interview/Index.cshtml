@@ -1,0 +1,58 @@
+﻿@model List<Interview>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SalesPerson/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Görüşme Bilgileri";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <center><h3>Satis Personelini Yaptigi Görüsme Listesi </h3></center>
+
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width:auto">ID</th>
+                            <th style="width:auto">Görüşmeyi Yapan Satış Personeli</th>
+                            <th style="width:auto">Görüşme Tarihi</th>
+                            <th style="width:auto">Görüşülen Kişi</th>
+                            <th style="width:auto">Firmanın Sektör</th>
+                            <th style="width:auto">Firma Profili</th>
+                            <th style="width:auto">Fuar</th>
+                            <th style="width:auto">Salon</th>
+                            <th style="width:auto">Görüşme Notlari</th>
+                            <th style="width:auto"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.SalesPerson.FullName SicilNo: @item.SalesPersonId </td>
+                                <td>@item.OfferDate.ToString("d")</td>
+                                <td>@item.Interviewee.Company.CompanyName<br />@item.Interviewee.FullName<Br /> @item.Interviewee.Title<Br /> @item.Interviewee.Phone <Br />@item.Interviewee.Email</td>
+                                <td>@item.Sector.SectorAdı</td>
+                                <td>@item.CompanyProfile.ProfileName</td>
+                                <td>@item.Fair.FairName <Br />@item.Fair.StartDate.ToString("d")-@item.Fair.FinishDate.ToString("d")<Br /> @item.Fair.Address</td>
+                                <td>@item.Saloon.SalonName</td>
+                                <td>@item.Notes</td>
+                                <td>
+                                    @Html.ActionLink("Yeni Görüşme Ekle", "AddInterview", "Interview", null, new { @class = "btn btn-danger" })
+                                    @Html.ActionLink("Güncelle", "UpdateInterview", new { id=item.ID}, new { @class = "btn btn-warning" })
+                                    <br />
+                                    @Html.ActionLink("Ayrıntılı Görüntüle", "Detail", new { id = item.ID }, new { @class = "btn btn-info" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

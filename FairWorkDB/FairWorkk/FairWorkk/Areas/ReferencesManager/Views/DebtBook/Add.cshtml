@@ -1,0 +1,72 @@
+﻿@model CompanyContractPayment
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/ReferencesManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <h2>Borç Defterine Yeni Ekleme</h2>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Add", "DebtBook", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label style="color:cornflowerblue">Sözleşme ID Seçin</label>
+                        @Html.DropDownList("ContractId", (SelectList)ViewBag.Contract, "Lütfen firmayı seçin.", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:cornflowerblue">Firmayı Seçin</label>
+                        @Html.DropDownList("CompanyId", (SelectList)ViewBag.Company, "Lütfen firmayı seçin.", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:cornflowerblue">Fuarı Seçin</label>
+                        @Html.DropDownList("FairId", (SelectList)ViewBag.Fair, "Lütfen fuarı seçin.", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:cornflowerblue">Toplam Tutarı</label>
+                        @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control", placeholder = "Toplam tutarı yazınız...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:cornflowerblue">Ödediği Tutarı</label>
+                        @Html.TextBoxFor(x => x.AmountPaid, new { @class = "form-control", placeholder = "Ödediği toplam tutarı yazınız...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:cornflowerblue">Kalan Tutarı</label>
+                        @Html.TextBoxFor(x => x.AmountNotPaid, new { @class = "form-control", placeholder = "Kalan tutarı yazınız...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:cornflowerblue">Dolar Tutarı</label>
+                        @Html.TextBoxFor(x => x.DollarPrice, new { @class = "form-control", placeholder = "Dolar tutarı yazınız...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:cornflowerblue">Euro Tutarı</label>
+                        @Html.TextBoxFor(x => x.EuroPrice, new { @class = "form-control", placeholder = "Euro tutarı yazınız...." })
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color:cornflowerblue">TürkLira Tutarı</label>
+                        @Html.TextBoxFor(x => x.TurkıshLira, new { @class = "form-control", placeholder = "TL tutarı yazınız...." })
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                            @Html.ActionLink("Geri Dön", "Index", "DebtBook", new { @class = "btn btn-secondary" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

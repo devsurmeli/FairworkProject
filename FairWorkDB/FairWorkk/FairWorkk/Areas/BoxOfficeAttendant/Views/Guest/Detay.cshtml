@@ -1,0 +1,28 @@
+﻿@model List<Guest>
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Areas/BoxOfficeAttendant/Views/Shared/_Layout.cshtml";
+    TempData["Title"] = "Ziyaretçi Detayı";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-12">
+            <center>
+                <h6 style="color:cornflowerblue">Ziyaretçi ID = <label style="color:red">@item.ID</label></h6>
+                <h6 style="color:cornflowerblue">Adi-Soyadı = <label style="color:red">@item.Name @item.Surname</label></h6>
+                <h6 style="color:cornflowerblue">Çalıştığı Firma Adı = <label style="color:red">@item.CompanyName</label></h6>
+                <h6 style="color:cornflowerblue">Adresi = <label style="color:red">@item.Adress</label></h6>
+                <h6 style="color:cornflowerblue">Telefon Numarası = <label style="color:red">@item.Phone</label></h6>
+                <h6 style="color:cornflowerblue">Email Adresi = <label style="color:red">@item.Email</label></h6>
+                <h6 style="color:cornflowerblue">Mesleği = <label style="color:red">@item.Profession.ProfessionName</label></h6>
+                <h6 style="color:cornflowerblue">Katıldığı Fuar = <label style="color:red">@item.Fair.FairName</label></h6>
+                <h6 style="color:cornflowerblue">Bilet Tipi = <label style="color:red">@item.TicketType.TypeName</label></h6>
+                <img src="@item.QrCodeImage" style="height:400px;width:500px" /><br />
+                @Html.ActionLink("Geri Dön", "Index", "Guest", null, new { @class = "btn btn-danger" })
+            </center>
+        </div>
+    }
+</div>
+
